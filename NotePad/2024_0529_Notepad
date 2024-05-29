@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5월29일의 메모장</title>
+  </head>
+  <body>
+    <h1>Installer</h1>
+    <ol type="I">
+      <li>Github</li>
+      <li>Slack</li>
+      <li>Visual studio code</li>
+      <li><abbr title="Visual studio code extention">Live preview</abbr></li>
+      <li><abbr title="Visual studio code extention">Auto rename tag</abbr></li>
+      <li><abbr title="Visual studio code extention">Live sever</abbr></li>
+      <li><abbr title="Visual studio code extention">Prettier</abbr></li>
+    </ol>
+    <dl>
+      <dt>Live preview</dt>
+      <dd>크롬을 확인하지않고 프로그램안에서 관측될 수 있게하는 프로그램</dd>
+      <dt>Auto rename tag</dt>
+      <dd>자동으로 태그를 완성시켜주는 프로그램</dd>
+    </dl>
+    <br />
+    <p>
+      Visual studio code - setting - search setting - word wrap - off를 on으로
+    </p>
+    <p>+editor format - format on save 체크</p>
+    <p>+editor default formatter - Prettier code formatter로 교체</p>
+  </body>
+</html>
