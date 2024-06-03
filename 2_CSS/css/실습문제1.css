@@ -1,0 +1,21 @@
+#bao {
+  border-radius: 50%;
+}
+#form {
+  text-align: center;
+}
+#github.github {
+  border: 1px solid;
+  width: 100px;
+  background: indianred;
+  color: white;
+  text-align: center;
+}
+#border1 {
+  border: 2px solid;
+  color: white;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  border-radius: 30px;
+}
