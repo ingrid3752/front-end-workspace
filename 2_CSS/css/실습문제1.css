@@ -1,21 +1,73 @@
 #bao {
+  position: relative;
+  top: 20px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
+  object-fit: fill;
 }
-#form {
-  text-align: center;
+#루이바오 {
+  font-weight: bold;
+  position: relative;
+  top: 25px;
+  font-size: 22px;
 }
 #github.github {
-  border: 1px solid;
-  width: 100px;
+  border: 2px solid;
+  width: 250px;
+  height: 40px;
+  left: 3rem;
   background: indianred;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  position: relative;
+  top: 5%;
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 18px;
+}
+.githublink {
+  text-decoration-line: none;
+  color: white;
+}
+#github:hover {
+  background-color: rgb(206, 77, 77);
   color: white;
   text-align: center;
 }
-#border1 {
+#instagram.instagram {
+  border: 2px solid;
+  width: 250px;
+  height: 40px;
+  left: 3rem;
+  background: indianred;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  position: relative;
+  top: 8%;
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 18px;
+}
+#instagram:hover {
+  background-color: rgb(206, 77, 77);
+  color: white;
+  text-align: center;
+}
+.instagramlink {
+  text-decoration-line: none;
+  color: white;
+}
+#padding1 {
   border: 2px solid;
   color: white;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 430px;
   text-align: center;
-  border-radius: 30px;
+  border-radius: 15px;
+  margin: 0 auto;
 }

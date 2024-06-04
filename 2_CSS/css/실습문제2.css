@@ -1,0 +1,100 @@
+header {
+  font-weight: bold;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  height: 75px;
+  padding: 1rem;
+  color: black;
+  background: white;
+  justify-content: space-between;
+  align-items: center;
+}
+#Head1 {
+  text-decoration: none;
+  color: black;
+}
+#Head2 {
+  text-decoration: none;
+  color: black;
+}
+#Head3 {
+  text-decoration: none;
+  color: black;
+}
+h1 {
+  display: inline-block;
+}
+h1 {
+  font-size: 2rem;
+}
+nav {
+  display: inline-block;
+}
+nav {
+  float: right;
+}
+.Head1:active {
+  background-color: black;
+  color: white;
+}
+.Head2:active {
+  background-color: black;
+  color: white;
+}
+.Head3:active {
+  background-color: black;
+  color: white;
+}
+.Heading1 h2 {
+  font-size: 30px;
+}
+.Heading1 {
+  background-color: red;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+.Heading2 h2 {
+  font-size: 30px;
+}
+.Heading2 {
+  background-color: purple;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+}
+.Heading3 h2 {
+  font-size: 30px;
+}
+.Heading3 {
+  background-color: yellow;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+#TOP {
+  display: flex;
+  position: fixed;
+  top: 80%;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-content: center;
+  line-height: 100px;
+}
