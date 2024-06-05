@@ -1,0 +1,56 @@
+header {
+  background-image: url(../../resources/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: color;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: fixed;
+}
+header h1 {
+  text-underline-offset: 15px;
+  font-size: 4rem;
+  font-weight: 400;
+  margin-left: 50px;
+  margin-top: 90px;
+  color: white;
+  text-decoration: underline 1px;
+}
+header nav {
+  padding-bottom: 100px;
+}
+header nav a {
+  color: white;
+  display: flex;
+  text-decoration: underline;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+section {
+  padding-left: 300px;
+}
+section h2 {
+  font-weight: bold;
+  font-size: 40px;
+  margin-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.juice {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 60%;
+  height: 70%;
+  padding-left: 400px;
+  padding-bottom: 20px;
+}
+section p {
+  text-align: justify;
+  line-height: 23px;
+}

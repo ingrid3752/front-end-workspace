@@ -1,0 +1,54 @@
+body {
+  background: linear-gradient(45deg, black, blue);
+  height: 100vh;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  padding-top: 400px;
+}
+.square {
+  width: 7px;
+  height: 40px;
+  border: 0.01px solid black;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s linear;
+  flex-direction: column-reverse;
+  border-radius: 25%;
+  animation: boxAni 0.5s linear infinite alternate;
+}
+.square:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.square:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.square:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.square:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.square:nth-child(5) {
+  animation-delay: 0.3s;
+}
+.square:nth-child(6) {
+  animation-delay: 0.4s;
+}
+.square:nth-child(7) {
+  animation-delay: 0.5s;
+}
+@keyframes boxAni {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(2);
+  }
+}
