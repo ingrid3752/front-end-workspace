@@ -1,13 +1,12 @@
 body {
   background: linear-gradient(45deg, black, blue);
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
-  padding-top: 400px;
 }
 .container {
   display: flex;
@@ -22,10 +21,6 @@ body {
   background-color: white;
   color: black;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 1s linear;
-  flex-direction: column-reverse;
   transition: 5s linear;
   border-radius: 25%;
   animation: boxAni 0.5s linear infinite alternate;
