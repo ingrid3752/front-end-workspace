@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +12,15 @@
         Q1. 웹 사이트 관리자는 아이디(id)가 'admin'인 경우라고 가정한다. 다음은 관리자일 경우 '관리자입니다.'를 console에 출력하시오.
      -->
     <script>
+      console.log("--- Q1 ---");
+      // const id = prompt("아이디 입력");
+      console.log(id);
+      if (id === "admin") console.log("관리자입니다.");
 
+      switch (id) {
+        case "admin":
+          console.log("관리자입니다.");
+      }
     </script>
 
     <!-- 
@@ -20,21 +28,44 @@
             합격 조건을 만족하였을 때 '합격', 만족하지 않으면 '불합격'을 console에 출력하시오.
       -->
     <script>
-
+      console.log("--- Q2 ---");
+      // const score1 = prompt("필기 시험 성적");
+      // const score2 = prompt("실기 시험 성적");
+      const score1 = 95;
+      const score2 = 20;
+      if (score1 >= 80 && score2 >= 80) {
+        console.log("합격");
+      } else {
+        console.log("불합격");
+      }
     </script>
 
     <!-- 
         Q3. 어떤 정수가 10과 20의 사이에 있는 수인지를 판별하여 사이에 있다면 '10과 20의 사이에 있습니다'를 출력, 그렇지 않다면 '10과 20의 사이에 있지 않습니다'를 console에 출력하시오.
      -->
     <script>
-
+      console.log("--- Q3 ---");
+      // const number = prompt("정수 입력");
+      const number = 15;
+      if (10 < number && number < 20) {
+        console.log("10과 20의 사이에 있습니다");
+      } else {
+        console.log("10과 20의 사이에 있지 않습니다");
+      }
     </script>
 
     <!-- 
         Q4. 나이(age)가 65세 이상이거나 8세 미만이면 '입장료는 무료입니다'를 출력, 그렇지 않다면 '입장료는 10,000원입니다'를 console에 출력하시오.
       -->
     <script>
-
+      console.log("--- Q4 ---");
+      // const age = prompt("나이");
+      const age = 50;
+      if (age >= 65 || age < 8) {
+        console.log("입장료는 무료입니다");
+      } else {
+        console.log("입장료는 10,000원입니다");
+      }
     </script>
 
     <!-- 
@@ -43,7 +74,59 @@
             예) 12월은 겨울입니다.
      -->
     <script>
-
+      console.log("--- Q5 ---");
+      const month = Number(prompt("월 입력"));
+      console.log(typeof month);
+      /* <-- 자바스크립트 내에서 여러 줄에 주석걸때!
+      if (3 <= month && month <= 5) {
+        console.log("봄");
+      } else if (6 <= month && month <= 8) {
+        console.log("여름");
+      } else if (9 <= month && month <= 11) {
+        console.log("가을");
+      } else if (month === 12 || month === 1 || month === 2) {
+        console.log("겨울");
+      } */
+      // if -> 중첩 가능! 주의! 가급적으로 중첩 쓰지 않는 것
+      let season = "";
+      if (1 <= month && month <= 12) {
+        if (3 <= month && month <= 5) {
+          season = "봄";
+        } else if (6 <= month && month <= 8) {
+          season = "여름";
+        } else if (9 <= month && month <= 11) {
+          season = "가을";
+        } else if (month === 12 || month === 1 || month === 2) {
+          season = "겨울";
+        }
+        console.log(`${month}월은 ${season}입니다`);
+      }
+      // switch
+      switch (month) {
+        case 3:
+        case 4:
+        case 5:
+          season = "봄";
+          break;
+        case 6:
+        case 7:
+        case 8:
+          season = "여름";
+          break;
+        case 9:
+        case 10:
+        case 11:
+          season = "가을";
+          break;
+        case 12:
+        case 1:
+        case 2:
+          season = "겨울";
+          break;
+      }
+      if (season !== "") {
+        console.log(`${month}월은 ${season}입니다.`);
+      }
     </script>
   </body>
 </html>

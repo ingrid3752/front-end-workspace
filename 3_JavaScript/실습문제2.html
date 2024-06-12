@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>실습문제2</title>
   </head>
   <body>
     <!-- 입력값은 prompt 사용! -->
@@ -12,7 +12,11 @@
         Q1. 웹 사이트 관리자는 아이디(id)가 'admin'인 경우라고 가정한다. 다음은 관리자일 경우 '관리자입니다.'를 console에 출력하시오.
      -->
     <script>
-
+      // const msg = prompt("아이디를 입력하세요");
+      const msg = "admin";
+      if (msg == "admin") {
+        console.log("관리자입니다.");
+      }
     </script>
 
     <!-- 
@@ -20,21 +24,45 @@
             합격 조건을 만족하였을 때 '합격', 만족하지 않으면 '불합격'을 console에 출력하시오.
       -->
     <script>
-
+      // const writtenTest = prompt("필기 시험");
+      // const practicalTest = prompt("실기 시험");
+      const writtenTest = 80;
+      const practicalTest = 80;
+      if (writtenTest >= 80 && practicalTest >= 80) {
+        console.log("합격");
+      } else {
+        console.log("불합격");
+      }
     </script>
 
     <!-- 
         Q3. 어떤 정수가 10과 20의 사이에 있는 수인지를 판별하여 사이에 있다면 '10과 20의 사이에 있습니다'를 출력, 그렇지 않다면 '10과 20의 사이에 있지 않습니다'를 console에 출력하시오.
      -->
     <script>
-
+      // const number = prompt("숫자를 입력하세요");
+      const number = 15;
+      const result1 = "10과 20의 사이에 있습니다";
+      const result2 = "10과 20의 사이에 있지 않습니다";
+      if (10 < number && number < 20) {
+        console.log(result1);
+      } else {
+        console.log(result2);
+      }
     </script>
 
     <!-- 
         Q4. 나이(age)가 65세 이상이거나 8세 미만이면 '입장료는 무료입니다'를 출력, 그렇지 않다면 '입장료는 10,000원입니다'를 console에 출력하시오.
       -->
     <script>
-
+      // const age = prompt("나이");
+      const age = 65;
+      const admissionFee1 = "입장료는 무료입니다";
+      const admissionFee2 = "입장료는 10,000원입니다";
+      if (age >= 65 || age < 8) {
+        console.log(admissionFee1);
+      } else {
+        console.log(admissionFee2);
+      }
     </script>
 
     <!-- 
@@ -43,7 +71,17 @@
             예) 12월은 겨울입니다.
      -->
     <script>
-
+      // const month = Number(prompt("월을 입력하세요"));
+      const month = 12;
+      if (3 <= month && month <= 5) {
+        console.log("봄");
+      } else if (6 <= month && month <= 8) {
+        console.log("여름");
+      } else if (9 <= month && month <= 11) {
+        console.log("가을");
+      } else if (month === 12 || month === 1 || month === 2) {
+        console.log("겨울");
+      }
     </script>
   </body>
 </html>
