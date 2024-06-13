@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+}
+img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 15px;
+}
+button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+#click {
+  background-color: rgb(255, 105, 179);
+  color: rgb(5, 3, 133);
+  border: none;
+}
+#restart {
+  background-color: rgb(5, 3, 133);
+  color: rgb(255, 105, 179);
+  border: none;
+}
+#result {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-style: italic;
+}
