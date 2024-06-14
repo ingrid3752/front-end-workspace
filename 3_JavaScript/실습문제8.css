@@ -1,0 +1,11 @@
+form {
+  border: 1px solid #ccc;
+}
+form div {
+  margin-bottom: 10px;
+}
+form span {
+  display: block;
+  color: #999;
+  margin-left: 12px;
+}
