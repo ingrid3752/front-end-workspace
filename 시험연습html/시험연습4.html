@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>시험연습4</title>
+    <link rel="stylesheet" href="/2_CSS/css/reset.css" />
+    <link rel="stylesheet" href="/시험연습css/시험연습4.css" />
+  </head>
+  <body>
+    <!-- form div label(id) input(id,name) span(id) -->
+    <!-- select(name id) option -->
+    <form action="">
+      <div>
+        <label for="userId">* 아이디 : </label>
+        <input type="text" id="userId" name="userId" />
+        <span id="userIdSpan"
+          >첫 글자는 반드시 영문자로, 그리고 영문자, 숫자 포함하여 총 4~12자로
+          입력하시오.</span
+        >
+      </div>
+      <div>
+        <label for="userPwd">* 비밀번호 : </label>
+        <input type="password" name="userPwd" id="userPwd" />
+        <span id="userPwd"
+          >영문자, 숫자, 특수문자 포함하여 총 8~15자로 입력하시오.</span
+        >
+      </div>
+      <div>
+        <label for="userPwdCheck">* 비밀번호 확인 : </label>
+        <input type="password" id="userPwdCheck" />
+        <span id="userPwdCheck"
+          >위의 비밀번호와 일치하게 입력하시오
+          <div class=""></div
+        ></span>
+      </div>
+      <div>
+        <label for="userName">* 이름 : </label>
+        <input type="text" id="userName" />
+        <span id="userNameSpan"
+          >한글로만 이루어져야되며 2글자 이상으로 입력하시오.</span
+        >
+      </div>
+      <div>
+        <label for="email">* 이메일 : </label>
+        <input type="email" name="email" id="email" />
+        <span id="email">이메일 형식에 맞춰서 입력하시오.</span>
+      </div>
+      <div>
+        <label for="hobby">* 취미 : </label>
+        <input
+          type="text"
+          name="hobby"
+          id="hobby"
+          placeholder="축구, 농구, 야구, 독서 등"
+        />
+      </div>
+      <div>
+        <label for="addr">* 거주지 : </label>
+        <select name="addr" id="addr">
+          <option value="seoul">서울</option>
+          <option value="gyeonggi">경기</option>
+          <option value="jeju">제주</option>
+        </select>
+      </div>
+      <button id="submit">회원가입</button>
+      <button id="reset">취소</button>
+    </form>
+
+    <script src="/시험연습js/시험연습4.js"></script>
+  </body>
+</html>
