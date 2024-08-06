@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 350px;
+}
+#mypageinfo {
+  background-color: #f1d9d9;
+  padding: 20px;
+  padding-top: 75px;
+  border-radius: 8px;
+  box-shadow: 0 20px 30px rgba(218, 178, 178, 0.8);
+  width: 100%;
+  max-width: 400px;
+}
