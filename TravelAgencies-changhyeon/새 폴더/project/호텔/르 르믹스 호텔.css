@@ -1,0 +1,83 @@
+header {
+  background: #303030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
+#loginbutton {
+  background-color: rgba(0, 0, 0, 0.445);
+  width: 100px;
+  border: none;
+  color: white;
+  font-size: 2rem;
+}
+#mainlogin {
+  background-color: rgba(0, 0, 0, 0.445);
+  width: 200px;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 2rem;
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.slide {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+img {
+  width: 700px;
+  height: 500px;
+}
+.background {
+  display: flex;
+  background-position: cover;
+  background-repeat: no-repeat;
+}
+
+.rating-container {
+  width: 300px;
+  padding: 50px;
+  border: 1px solid #fc0d0d;
+  margin: 15px;
+}
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-item span {
+  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.rating-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  position: relative;
+  height: 8px;
+  border-radius: 20px;
+}
+
+.rating-fill {
+  height: 100%;
+  background-color: #008000;
+  border-radius: 20px;
+}
+
+.rating-score {
+  position: absolute;
+  right: -50px;
+  font-size: 14px;
+}

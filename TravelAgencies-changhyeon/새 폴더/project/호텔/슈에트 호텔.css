@@ -1,0 +1,54 @@
+.slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.slide {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+img {
+  width: 700px;
+  height: 500px;
+}
+
+.rating-container {
+  width: 300px;
+  padding: 50px;
+  border: 1px solid #fc0d0d;
+  margin: 15px;
+}
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rating-item span {
+  width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.rating-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  position: relative;
+  height: 8px;
+  border-radius: 20px;
+}
+
+.rating-fill {
+  height: 100%;
+  background-color: #008000;
+  border-radius: 20px;
+}
+
+.rating-score {
+  position: absolute;
+  right: -50px;
+  font-size: 14px;
+}

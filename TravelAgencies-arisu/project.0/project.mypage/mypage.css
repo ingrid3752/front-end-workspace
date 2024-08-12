@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+div {
+  margin: auto;
+  width: 300px;
+  background-color: #9ae0d585;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+}
+.user-info-box {
+  margin-bottom: 10px;
+  border: 2px solid #1bbc9c52;
+  border-radius: 5px;
+  padding: 0px;
+}
+a {
+  text-decoration: none;
+}

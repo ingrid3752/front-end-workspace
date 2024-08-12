@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "가나/css"
+    },
+    {
+      "path": "가나/fonts"
+    },
+    {
+      "path": "가나/images"
+    },
+    {
+      "path": "가나/js"
+    }
+  ],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "css"
+  }
+}
