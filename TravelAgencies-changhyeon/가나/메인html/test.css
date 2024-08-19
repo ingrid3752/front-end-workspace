@@ -1,0 +1,180 @@
+body {
+  background: linear-gradient(30deg, #cca37c, #c8c8c8);
+  margin: 0;
+  padding: 0;
+}
+#header {
+  background: #303030;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+#div {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+h1 {
+  position: relative;
+  left: 45%;
+  top: 50px;
+  font-weight: 350;
+  color: rgba(0, 0, 0, 0.979);
+}
+
+/* slider */
+.slider__wrap {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider__img {
+  /* 이미지 보이는 영역 */
+  position: center;
+  width: 500px;
+  height: 300px;
+  overflow: hidden;
+}
+.slider__inner {
+  /* 이미지를 감싸고 있는 부모(움직이는 부분) */
+  display: flex;
+
+  width: 2000px;
+  height: 520px;
+}
+.slider {
+  /* 개별적인 이미지 */
+  position: relative;
+  width: 800px;
+  height: 520px;
+}
+.slider::before {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 5px 10px;
+}
+
+@media (max-width: 800px) {
+  .slider__img {
+    width: 400px;
+    height: 260px;
+  }
+}
+
+.slider__btn a {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(121, 120, 120, 0.623);
+  text-align: center;
+  line-height: 50px;
+  transition: all 0.2s;
+  display: block;
+  color: #fff;
+}
+.slider__btn a:hover {
+  background: rgb(190, 157, 85);
+}
+.slider__btn a.prev {
+  left: 702px;
+}
+.slider__btn a.next {
+  right: 701px;
+}
+.slider__dot {
+  position: absolute;
+  left: 48%;
+  top: 450px;
+  bottom: 20px;
+}
+.slider__dot .dot {
+  width: 15px;
+  height: 15px;
+  background: rgba(22, 21, 21, 0.205);
+  display: inline-block;
+  border-radius: 50%;
+  /* text-indent: 들여쓰기 속성. 여기에선 blind 역할 */
+  text-indent: -9999px;
+  transition: all 0.3s;
+  margin: 2px;
+}
+.rating-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(45deg, #cca37c, #c8c8c8);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rating-item span {
+  width: 200px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-right: 15px;
+}
+
+.rating-bar {
+  width: 100%;
+
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+}
+
+.rating-fill {
+  height: 100%;
+  background: linear-gradient(210deg, #c58549, #c29090);
+  border-radius: 6px;
+  transition: width 0.4s ease-in-out;
+}
+
+.rating-score {
+  right: -45px;
+  font-size: 14px;
+  color: #ffffff56;
+}
+
+.review {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(190deg, #cca37c, #c8c8c8);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.tag {
+  margin-bottom: 15px;
+}
+
+.tag p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000;
+}
+body {
+  font-family: "Gowun Dodum", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
