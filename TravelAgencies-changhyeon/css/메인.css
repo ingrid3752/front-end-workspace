@@ -1,0 +1,182 @@
+/*new font*/
+/*헤더*/
+@font-face {
+  src: url("../html/font/Paris2024-Variable.ttf");
+  font-family: "Binggrae";
+}
+#Binggrae_font {
+  font-family: "Binggrae";
+}
+#header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding-left: 30px;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#KHTRAVLE {
+  color: white;
+  font-size: 2rem;
+}
+#login {
+  color: white;
+  font-size: 1.3rem;
+  padding-right: 10px;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+#sign {
+  color: white;
+  font-size: 1.3rem;
+  padding-right: 150px;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+#loginbutton {
+  height: 30px;
+  color: rgb(155, 108, 108);
+}
+#kh {
+  color: white;
+  padding-left: 30px;
+  font-size: 3rem;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+.menu {
+  position: fixed;
+  right: 20px;
+  width: 30px;
+  overflow: hidden;
+  margin: 150px auto;
+  bottom: 480px;
+  height: 300px;
+  width: 100px;
+  overflow: hidden;
+  margin: 150px auto;
+}
+
+.menu > li {
+  width: 20%; /*20*5=100%*/
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  background-color: #000000;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.submenu > li {
+  line-height: 50px;
+  background-color: #000000;
+}
+
+.submenu {
+  height: 0; /*ul의 높이를 안보이게 처리*/
+  overflow: hidden;
+}
+.menu > li:hover {
+  background-color: #000000;
+  transition-duration: 0.5s;
+}
+
+.menu > li:hover .submenu {
+  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
+  transition-duration: 1s;
+}
+
+.menu > li {
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  background-color: #000000;
+}
+
+/*바디*/
+section p {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section h2 {
+  font-size: 4rem;
+}
+#mainpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+#h2main {
+  font-size: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+#inputmain {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin: auto;
+  height: 30px;
+}
+#input {
+  width: 500px;
+  height: 40px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  outline: none;
+  border-right: 0px;
+  background-color: rgba(255, 255, 255, 0.274);
+  border: solid 0px;
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+}
+#button {
+  height: 42px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-left: 0px;
+  outline: none;
+  color: rgb(243, 236, 204);
+  background-color: rgba(255, 255, 255, 0.274);
+  border: solid 0px;
+  font-size: 1rem;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.5)),
+    url(/IMG/Untitled\ design.png);
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
