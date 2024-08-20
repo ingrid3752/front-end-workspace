@@ -1,0 +1,341 @@
+/*new font*/
+/*헤더*/
+@font-face {
+  src: url("../html/font/Paris2024-Variable.ttf");
+  font-family: "Binggrae";
+}
+#Binggrae_font {
+  font-family: "Binggrae";
+}
+
+#body {
+  background-image: url(../IMG/Untitled\ design.png);
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  margin: 0;
+}
+#p0 {
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  display: inline-block;
+
+  border-width: 222px 0;
+  padding: 4em 0em;
+  position: absolute;
+  top: 18%;
+  left: 35%;
+  width: 60em;
+  margin: 0 0 0 -20em;
+
+  #span0 {
+    font: 700 6em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: 0.25em 0 0.325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+    /* Clip Background Image */
+
+    background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxNzExMjVfMjMg%2FMDAxNTExNjA5MTg1Njk2.9Gh5mh-9z8t3IMCtSNJ040BoTS9eGhAt5N7msoDyBRAg.Pxvgd8L-kcVglEdKOK8e-ZvMlXVjF1qXdiAFjRKs3hAg.GIF.yso1029%2F%25C7%25C1%25B7%25BA%25C5%25BB6.gif&type=sc960_832_gif)
+      repeat-x;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 12s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Animate Background Image */
+/* 이미지 속도 */
+@-webkit-keyframes aitf {
+  % {
+    background-position: 150%;
+  }
+  100% {
+    background-position: 20% 50%;
+  }
+}
+
+@-webkit-keyframes aitf {
+  0% {
+    background-position: 50%;
+  }
+  100% {
+    background-position: 120% 50%;
+  }
+}
+#p1 {
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  display: inline-block;
+  border: 4px double rgba(255, 255, 255, 0.25);
+  border-width: 4px 0;
+  padding: 15em 0em;
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 40em;
+  margin: 0 0 0 -20em;
+
+  #span1 {
+    font: 700 1.5em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: 0.25em 0 0.325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+    /* Clip Background Image */
+
+    background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxNzExMjVfMjMg%2FMDAxNTExNjA5MTg1Njk2.9Gh5mh-9z8t3IMCtSNJ040BoTS9eGhAt5N7msoDyBRAg.Pxvgd8L-kcVglEdKOK8e-ZvMlXVjF1qXdiAFjRKs3hAg.GIF.yso1029%2F%25C7%25C1%25B7%25BA%25C5%25BB6.gif&type=sc960_832_gif)
+      repeat-x;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 15s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Animate Background Image */
+/* 이미지 속도 */
+@-webkit-keyframes aitf {
+  0% {
+    background-position: 50%;
+  }
+  100% {
+    background-position: 120% 50%;
+  }
+}
+
+#p2 {
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  display: inline-block;
+  border: 4px double rgba(255, 255, 255, 0.25);
+  border-width: 4px 0;
+  padding: 13em 0em;
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  width: 40em;
+  margin: 0 0 0 -20em;
+
+  #span2 {
+    font: 700 1.5em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: 0.25em 0 0.325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+    /* Clip Background Image */
+
+    background: url(https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxNzExMjVfMjMg%2FMDAxNTExNjA5MTg1Njk2.9Gh5mh-9z8t3IMCtSNJ040BoTS9eGhAt5N7msoDyBRAg.Pxvgd8L-kcVglEdKOK8e-ZvMlXVjF1qXdiAFjRKs3hAg.GIF.yso1029%2F%25C7%25C1%25B7%25BA%25C5%25BB6.gif&type=sc960_832_gif)
+      repeat-x;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* Animate Background Image */
+
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 10s linear infinite;
+
+    /* Activate hardware acceleration for smoother animations */
+
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Animate Background Image */
+/* 이미지 속도 */
+
+#header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  padding-left: 30px;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#KHTRAVLE {
+  color: white;
+  font-size: 2rem;
+}
+#login {
+  color: white;
+  font-size: 1.3rem;
+  padding-right: 10px;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+#sign {
+  color: white;
+  font-size: 1.3rem;
+  padding-right: 150px;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+#loginbutton {
+  height: 30px;
+  color: rgb(155, 108, 108);
+}
+#kh {
+  color: white;
+  padding-left: 30px;
+  font-size: 3rem;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+.menu {
+  position: fixed;
+  right: 20px;
+  width: 30px;
+  overflow: hidden;
+  margin: 150px auto;
+  bottom: 480px;
+  height: 300px;
+  width: 100px;
+  overflow: hidden;
+  margin: 150px auto;
+}
+
+.menu > li {
+  width: 20%; /*20*5=100%*/
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  background-color: #000000;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.menu a {
+  color: #fff;
+}
+
+.submenu > li {
+  line-height: 50px;
+  background-color: #000000;
+}
+
+.submenu {
+  height: 0; /*ul의 높이를 안보이게 처리*/
+  overflow: hidden;
+}
+.menu > li:hover {
+  background-color: #000000;
+  transition-duration: 0.5s;
+}
+
+.menu > li:hover .submenu {
+  height: 250px; /*서브메뉴 li한개의 높이 50*5*/
+  transition-duration: 1s;
+}
+
+.menu > li {
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  background-color: #000000;
+}
+
+/*바디*/
+section p {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section h2 {
+  font-size: 4rem;
+}
+#mainpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+}
+#h2main {
+  font-size: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+#inputmain {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin: auto;
+  height: 30px;
+}
+#input {
+  width: 500px;
+  height: 40px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  outline: none;
+  border-right: 0px;
+  background-color: rgba(255, 255, 255, 0.274);
+  border: solid 0px;
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  font-family: "Sunflower", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+}
+#button {
+  height: 42px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-left: 0px;
+  outline: none;
+  color: rgb(243, 236, 204);
+  background-color: rgba(255, 255, 255, 0.274);
+  border: solid 0px;
+  font-size: 1rem;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.5)),
+    url(/IMG/Untitled\ design.png);
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
