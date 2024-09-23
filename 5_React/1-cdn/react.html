@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // React.createElement("태그", 속성, "텍스트");
+      // ReactDOM.render(렌더링할 목록)
+      // 단점 : const 전체를 한번더 렌더링해야한다
+      let count = 0;
+      const setCount = () => {
+        count++;
+
+        const h1 = React.createElement("h1", null, "Total Clicks : " + count);
+        const button = React.createElement(
+          "button",
+          { onClick: setCount },
+          "Click!"
+        );
+        const container = React.createElement("div", null, h1, button);
+        ReactDOM.render(container, root);
+      };
+
+      const root = document.querySelector("#root");
+      const h1 = React.createElement("h1", null, "Total Clicks : " + count);
+      const button = React.createElement(
+        "button",
+        { onClick: setCount },
+        "Click!"
+      );
+      const container = React.createElement("div", null, h1, button);
+      ReactDOM.render(container, root);
+    </script>
+  </body>
+</html>

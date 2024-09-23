@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vanilla</title>
+  </head>
+  <body>
+    <h1>Total Clicks : <span>0</span></h1>
+    <button onclick="setCount()">Click!</button>
+    <!-- function setCount로 버튼을 클릭했을때 숫자가 올라가도록 
+        let count = 0;
+        count++;
+    -->
+    <script>
+      const span = document.querySelector("span");
+      const setCount = () => {
+        span.innerHTML = parseInt(span.innerHTML) + 1;
+      };
+    </script>
+  </body>
+</html>

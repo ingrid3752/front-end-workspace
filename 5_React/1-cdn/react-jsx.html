@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react-jsx</title>
+    <!-- react -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <!-- babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <!-- JSX(Javascript Syntax eXtension) -->
+    <div id="root"></div>
+    <!-- babel을 사용하여 태그형식으로 보냄 -->
+    <!-- 아직 ReactDOM을 한번 더 렌더링 해야한다. -->
+    <script type="text/babel">
+      let count = 0;
+      const setCount = () => {
+        count++;
+        ReactDOM.render(<Container />, root);
+      };
+      const Container = () => {
+        return (
+          <div>
+            <h1>Total Clicks : {count}</h1>
+            <button onClick={setCount}>Click!</button>
+          </div>
+        );
+      };
+      ReactDOM.render(<Container />, root);
+    </script>
+  </body>
+</html>
