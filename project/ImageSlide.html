@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImageSilde</title>
+  </head>
+  <body style="margin: 0">
+    <div style="overflow: hidden">
+      <div class="container">
+        <style>
+          .container {
+            width: 300vw;
+            transition: transform 0.5s;
+          }
+          .inner {
+            width: 100vw;
+            float: left;
+          }
+        </style>
+        <div class="inner">
+          <img src="/resources/blueberries.jpg" alt="" />
+          <style>
+            .inner img {
+              width: 100%;
+              height: 50%;
+            }
+          </style>
+        </div>
+        <div class="inner">
+          <img src="/resources/cake.jpg" alt="" />
+        </div>
+        <div class="inner">
+          <img src="/resources/icecream.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+    <button class="버튼1">1</button>
+    <button class="버튼2">2</button>
+    <button class="버튼3">3</button>
+
+    <script>
+      document.querySelector(".버튼1").addEventListener("click", function () {
+        document.querySelector(".container").style.transform = "translate(0vw)";
+      });
+      document.querySelector(".버튼2").addEventListener("click", function () {
+        document.querySelector(".container").style.transform =
+          "translate(-100vw)";
+      });
+      document.querySelector(".버튼3").addEventListener("click", function () {
+        document.querySelector(".container").style.transform =
+          "translate(-200vw)";
+      });
+    </script>
+  </body>
+</html>
