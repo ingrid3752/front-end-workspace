@@ -40,6 +40,7 @@
 //   );
 // };
 // export default Converter;
+
 // React HTML
 import { useEffect, useState } from "react";
 import Btn from "./Btn";
@@ -57,6 +58,8 @@ import Btn from "./Btn";
   useRef 별칭 부여해서 빠르게 가져옴
 */
 const Converter = () => {
+  // const [state값, state변수값] = useState(초기값);
+  // 상태가 바뀌는 시점을 찾고자 할때 = useEffect
   const [text, setText] = useState("Minutes => Hours");
   const [bool, setBool] = useState(false);
   const [number, setNumber] = useState("");
