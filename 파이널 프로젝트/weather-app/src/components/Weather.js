@@ -12,22 +12,19 @@ const Weather = () => {
           "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst",
           {
             params: {
-              serviceKey: "발급받은_API_키", // 여기에 실제 API 키를 입력하세요
+              serviceKey:
+                "d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D",
               pageNo: 1,
               numOfRows: 10,
               dataType: "JSON",
-              base_date: "20240928", // 요청할 날짜
-              base_time: "1830", // 요청할 시간
+              base_date: "20240928", // 날짜
+              base_time: "1830", // 시간
               nx: 60, // X 좌표
               ny: 127, // Y 좌표
             },
           }
         );
-
-        // 응답 전체를 로그로 출력
-        console.log("API 응답:", response.data);
-
-        // 응답 구조 확인
+        console.log("API :", response.data);
         const items = response.data.response?.body?.items?.item;
 
         if (items && items.length > 0) {
@@ -61,7 +58,7 @@ const Weather = () => {
           ))}
         </ul>
       ) : (
-        <p>데이터를 불러오는 중...</p>
+        <p>데이터</p>
       )}
     </div>
   );
