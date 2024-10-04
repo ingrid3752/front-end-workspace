@@ -1,6 +1,12 @@
 ## API 키
 
+<!-- 공공데이터포털 단기예보 API키 -->
+
 d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D
+
+<!-- Openweather API 키 -->
+
+464ce89f05d310c3ebcdad8c20e4af4d
 
 ## API-URL
 
