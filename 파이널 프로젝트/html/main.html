@@ -3,32 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>final</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/날씨모달.css" />
   </head>
   <body>
     <div class="main">
-      <div class="main2">
-        <div class="floating-window">
-          <div class="window-header">
-            <div class="window-title">새발19</div>
-            <div class="window-controls">
-              <div class="window-minimize"></div>
-              <div class="window-maximize"></div>
-              <div class="window-close"></div>
-            </div>
-          </div>
-          <div class="window-content">
-            <p>안녕</p>
-          </div>
-        </div>
-      </div>
+      <div class="main2"></div>
     </div>
     <div style="background-color: rgba(0, 0, 0, 0.021)">
       <div class="bottom" style="background-color: rgba(255, 255, 255, 0.363)">
         <div class="icon">
-          <a href="">닫기<img src="../img/메모장.png" alt="" /></a>
+          <button class="btn-open-modal">
+            <img src="../img/메모장.png" alt="" />
+          </button>
         </div>
         <div class="icon">
           <a href=""><img src="../img/사진.png" alt="" /></a>
@@ -40,7 +30,20 @@
           <a href=""><img src="../img/캘린더.png" alt="" /></a>
         </div>
         <div class="icon">
-          <a href=""><img src="../img/날씨.png" alt="" /></a>
+          <button id="weatherButton">
+            <img src="../img/날씨.png" alt="" />
+          </button>
+        </div>
+        <!-- 모달 -->
+        <div class="modal">
+          <div class="modal-header"></div>
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>현재 날씨 정보</h2>
+            <p id="data"></p>
+            <p id="temp"></p>
+            <p id="weather"></p>
+          </div>
         </div>
         <div class="icon">
           <a href=""><img src="../img/휴지통.png" alt="" /></a>
@@ -48,5 +51,6 @@
       </div>
     </div>
     <script src="../js/main.js"></script>
+    <script src="../js/날씨모달.js"></script>
   </body>
 </html>

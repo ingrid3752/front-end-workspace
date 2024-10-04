@@ -29,25 +29,23 @@ function geoFindMe() {
 //464ce89f05d310c3ebcdad8c20e4af4d
 const API_KEY = "464ce89f05d310c3ebcdad8c20e4af4d";
 
-function onGeoOk(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  // console.log(`You live in ${latitude} and ${longitude}`);
-
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
-  )
-    .then((response) => response.json())
-    .then((data) =>
-      console.log(`온도 : ${data.main.temp}, 날씨 : ${data.weather[0].main}`)
-    );
-}
-
-function onGeoError() {
-  alert("Can't find you. No weather for you.");
-}
-
-navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+$(function () {
+  // Geolocation API에 액세스할 수 있는지를 확인
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+  } else {
+    alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.");
+  }
+  // 위치 감시 시작
+  var id = navigator.geolocation.watchPosition(function (pos) {
+    $("#latitude").html(pos.coords.latitude); // 위도
+    $("#longitude").html(pos.coords.longitude); // 경도
+  });
+  // 버튼 클릭으로 감시를 중지
+  $("#btnStop").click(function () {
+    navigator.geolocation.clearWatch(id);
+  });
+});
 
 function onGeoOk(position) {
   const latitude = position.coords.latitude;
@@ -58,23 +56,19 @@ function onGeoOk(position) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log("날씨 예보 데이터:", data);
-
-      // 현재 시간을 밀리초로 가져오고, 초 단위로 변환
-      const now = Math.floor(Date.now() / 1000);
-
-      // 가장 가까운 3시간 단위 날씨 데이터 찾기
+      const now = new Date();
+      const formattedDate = now.toLocaleString();
+      const temp = Math.round(data.main.temp);
+      const weather = data.weather[0].main;
       const closestWeather = data.list.reduce((prev, curr) => {
         return Math.abs(curr.dt - now) < Math.abs(prev.dt - now) ? curr : prev;
       });
 
-      // 날씨 데이터를 화면에 출력
       if (closestWeather) {
         const date = new Date(closestWeather.dt * 1000);
         const temp = Math.round(closestWeather.main.temp);
         const weather = closestWeather.weather[0].main;
 
-        // 날씨 상태를 한국어로 변환
         let weatherDescription;
         switch (weather) {
           case "Clear":
@@ -100,20 +94,19 @@ function onGeoOk(position) {
         }
 
         const formattedDate = date.toLocaleString();
-        document.getElementById("data").textContent = ` ${formattedDate}`;
-        document.getElementById(
-          "temp"
-        ).textContent = ` ${temp.toLocaleString()} °C`;
-        document.getElementById(
-          "weather"
-        ).textContent = ` ${weatherDescription}`; // 날씨 상태
-        console.log(
-          `날짜: ${formattedDate}, 온도: ${temp}°C, 날씨: ${weatherDescription}`
-        );
+        $("#data").text(`${formattedDate}`);
+        $("#temp").text(`${temp}°C`);
+        $("#weather").text(`${weatherDescription}`);
+
+        // 모달
+        $(".modal").show();
       } else {
         console.log("가장 가까운 3시간 단위의 날씨 데이터가 없습니다.");
       }
     });
+}
+function onGeoError() {
+  alert("위치를 찾을 수 없습니다.");
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);

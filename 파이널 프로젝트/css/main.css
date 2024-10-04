@@ -113,3 +113,9 @@ img {
 .window-content {
   padding: 12px;
 }
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
