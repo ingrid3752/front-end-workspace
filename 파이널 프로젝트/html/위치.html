@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <title>Insert title here</title>
     <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+    <link rel="stylesheet" href="/css/위치.css" />
     <script src="../js/위치.js"></script>
   </head>
   <body>
-    <ul>
-      <li>위도 : <span id="latitude"></span></li>
-      <li>경도 : <span id="longitude"></span></li>
-      <li>현재 시간 : <span id="data"></span></li>
-      <li>현재 온도 : <span id="temp"></span></li>
-      <li>현재 날씨 : <span id="weather"></span></li>
-      <li>내일 온도 : <span id="tomorrowTemp"></span></li>
-      <li>내일 날씨 : <span id="tomorrowWeather"></span></li>
-    </ul>
-    <input id="btnStop" type="button" value="위치 확인 중지" />
+    <button id="weatherButton">현재 날씨 보기</button>
+
+    <!-- 모달 -->
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>날씨 정보</h2>
+        <div class="weather-info">
+          <p id="data"></p>
+          <p id="temp"></p>
+          <p id="weather"></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
