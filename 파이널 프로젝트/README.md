@@ -2,15 +2,15 @@
 
 <!-- 공공데이터포털 단기예보 API키 -->
 
-d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D
+<!-- d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D -->
 
 <!-- Openweather API 키 -->
 
-464ce89f05d310c3ebcdad8c20e4af4d
+<!-- 464ce89f05d310c3ebcdad8c20e4af4d -->
 
 ## API-URL
 
-http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D&base_date=20240927&base_time=0500&nx=37&ny=127&numOfRows=10&pageNo=1&dataType=JSON
+<!-- http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=d9vi4rtd5J5g4CHzmFVcVogjnECDUvFif4GWKcrRSztRAFaLuuABqMHS1HZ0Lb5jt3U30P9EJbVd2kkUKavBWw%3D%3D&base_date=20240927&base_time=0500&nx=37&ny=127&numOfRows=10&pageNo=1&dataType=JSON -->
 
 ## Category 값들
 
@@ -63,3 +63,98 @@ http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKe
 - fcstValue :
 - 0 : 낙뢰 없음
 - 1 : 낙뢰 있음
+
+## 코인 API
+
+## 캘린더 API
+
+https://idealist.tistory.com/92
+
+## 팀명
+
+**새발19**: 개발 초보들이라 ‘새의 발’을 모티브로 하였으며, ‘19’는 팀원의 생년 첫번째와 두번째 자리에서 따왔습니다.
+
+## 프로젝트 목록
+
+1. **다크 모드 기능 구현 웹사이트**
+
+   - **기술 스택**: HTML, CSS, JavaScript
+   - **기능 설명**: 사용자가 버튼을 클릭하면 웹사이트의 테마가 라이트 모드에서 다크 모드로 전환됩니다.
+
+2. **자동 이미지 슬라이더**
+
+   - **기술 스택**: HTML, CSS, JavaScript
+   - **기능 설명**: JavaScript와 CSS로 구현된 이미지 슬라이더로, 자동으로 이미지가 순환되며 화면에 표시됩니다.
+
+3. **코인 가격 모니터링 앱**
+
+   - **기술 스택**: HTML, CSS, JavaScript (업비트 API)
+   - **기능 설명**: 업비트 API를 사용하여 실시간으로 특정 코인의 가격을 조회하고, 이를 사용자에게 표시합니다.
+     - **코인 목록 조회**: 실시간 코인 가격 조회 및 화면 표시.
+     - **코인 데이터 업데이트**: API로 받아온 실시간 데이터를 주기적으로 갱신하여 사용자 화면에 표시.
+
+4. **간단한 텍스트 편집기**
+
+   - **기술 스택**: HTML, CSS, JavaScript
+   - **기능 설명**: 메모장처럼 동작하는 간단한 텍스트 편집 프로그램으로, 사용자가 텍스트를 입력하고 수정할 수 있는 기능을 제공합니다.
+
+5. **실시간 데이터 시각화 대시보드**
+
+   - **기술 스택**: WebSocket, Chart.js
+   - **기능 설명**: WebSocket을 사용해 실시간으로 업데이트되는 데이터를 차트로 시각화하는 대시보드를 제공합니다.
+
+6. **실시간 음성 인식 시스템**
+
+   - **기술 스택**: JavaScript (Web Speech API)
+   - **기능 설명**: 사용자가 말하는 음성을 실시간으로 텍스트로 변환하여 화면에 표시하는 시스템입니다.
+
+7. **날씨 확인 API 앱**
+   - **기술 스택**: HTML, CSS, JavaScript (OpenWeatherMap API, Geolocation API)
+   - **기능 설명**: Geolocation API를 통해 사용자의 위치를 받아 OpenWeatherMap API를 사용해 해당 위치의 날씨 정보를 받아옵니다. 날씨 상태에 따라 배경 이미지가 변화하며, 현재 온도와 날씨 상태를 화면에 표시합니다.
+   - **처리 과정**:
+
+## 메인페이지 방식
+
+- **한페이지에서 처리** : 메인 화면내에서 클릭시마다 모달을 띄워서 처리(이전에 누른 페이지 유지중인 채로)
+- **footer** : footer에 아이콘을 나열하여 맥북 UI 형식으로 화면단 구현
+- **footerAPI,function** : 날씨, 메모장, 음성인식활용해서 페이지열기, 코인 조회, 다크 모드, 노래, 사진첩, 지도, 달력, 미니 게임(등등 일상생활에서 한 애플리케이션(페이지)에 있으면 편할 것같은 기능들인데 쓸데없이 여러 앱에서 해야하는 것들)
+
+## Semi-Project 대체 기능
+
+- **Accom** : Calendar 일정 추가, 조회, 수정, 삭제
+- **Review** : NotePad 메모 추가, 수정, 저장, 삭제
+
+## API 처리 방식 비교
+
+### 프론트엔드에서 API 처리
+
+- **장점**:
+
+  - 간단하고 직관적인 구조: API 호출이 프론트에서 바로 이루어져 백엔드 처리 없이도 데이터를 가져올 수 있습니다.
+  - 빠른 응답: 요청이 바로 API 서버로 전달되어 응답 속도가 빠릅니다.
+
+- **단점**:
+  - 보안 취약: API 키가 JavaScript 코드에 포함되어 있어 악의적인 사용자가 키를 쉽게 노출시킬 수 있습니다.
+  - API 호출 횟수 관리 어려움: 많은 사용자가 API를 호출할 경우, 호출 횟수가 급격하게 증가하여 API 제공자의 제한을 초과할 수 있습니다.
+
+### 백엔드에서 API 처리
+
+- **장점**:
+
+  - 보안 강화: API 키와 같은 민감한 정보를 백엔드에서 처리하여 프론트엔드에 노출되지 않도록 보호할 수 있습니다.
+  - 캐싱 및 최적화 가능: API 호출을 백엔드에서 캐싱하고 최적화하여, API 호출 횟수를 줄이고 성능을 개선할 수 있습니다.
+
+- **단점**:
+  - 추가적인 서버 비용 발생: API 호출을 처리하는 데 백엔드 서버의 자원이 추가로 소모됩니다.
+  - 복잡성 증가: 데이터를 백엔드에서 받아 처리하고 다시 클라이언트로 전달하는 흐름이기 때문에 코드 구조가 복잡해질 수 있습니다.
+
+## 결론
+
+- **백엔드에서 API를 처리해야 하는 경우**: 보안이 중요하고 API 키를 보호하거나, 데이터 가공 및 캐싱을 통해 성능 최적화가 필요한 경우.
+- **프론트엔드에서 API를 처리해야 하는 경우**: API 호출이 간단하고 보안 이슈가 적으며, 서버 비용 절감과 응답 속도가 중요한 경우.
+
+## 팀 역할 분배
+
+- **프론트엔드와 백엔드의 비율**: 50:50
+- **팀원 간 협력**: 역할을 명확하게 나누어 프로젝트 기한 내에 마무리합니다. 빠지는 일이 있더라도 각자의 책임을 다해야 합니다.
+- **커뮤니케이션**: 팀원 간 SNS 소통을 신속하게 하여 원활한 소통을 유지합니다.
