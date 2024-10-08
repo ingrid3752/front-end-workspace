@@ -1,0 +1,79 @@
+.modal {
+  display: flex; /* Flexbox로 중앙 정렬 */
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.modal-content {
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.weather-info {
+  position: relative;
+  z-index: 10;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clear {
+  background-image: url("./img/맑음.jpg");
+}
+
+.clouds {
+  background-image: url("./img/구름많음.jpg");
+}
+
+.rain {
+  background-image: url("./img/비.jpg");
+}
+
+.snow {
+  background-image: url("./img/눈.jpg");
+}
+
+.thunderstorm {
+  background-image: url("./img/뇌우.jpg");
+}
+
+.mist {
+  background-image: url("./img/안개.jpg");
+}
+
+.modal-content.clear,
+.modal-content.clouds,
+.modal-content.rain,
+.modal-content.snow,
+.modal-content.thunderstorm,
+.modal-content.mist {
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  width: 100%;
+  padding: 20px;
+}
