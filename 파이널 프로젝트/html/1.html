@@ -4,17 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/reset.css" />
-    <link rel="stylesheet" href="../css/1.css" />
   </head>
+  <!--4cf886d1d49413284fc5e4d51f9949ee-->
   <body>
-    <header>
-      <div></div>
-      <h1>sadf</h1>
-      <ul>
-        <li></li>
-      </ul>
-      <div></div>
-    </header>
+    <a href="javascript:KakaoLogin();"><img src="../img/카카오톡 (2).png" /></a>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+      window.Kakao.init("4cf886d1d49413284fc5e4d51f9949ee");
+      function KakaoLogin() {
+        window.Kakao.Auth.login({
+          scope: `profile_nickname, profile_image`,
+          success: function (authObj) {
+            console.log(authObj);
+            window.Kakao.API.request({
+              url: "/v2/user/me",
+              success: (res) => {
+                const kakao_account = res.kakao_account;
+                console.log(kakao_account);
+              },
+            });
+          },
+        });
+      }
+    </script>
   </body>
 </html>
