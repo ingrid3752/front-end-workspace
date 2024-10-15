@@ -1,5 +1,11 @@
+import memoIcon from "./img/메모장.png";
+import photoIcon from "./img/사진.png";
+import stockIcon from "./img/주식.png";
+import calendarIcon from "./img/캘린더.png";
+import weatherIcon from "./img/날씨.png";
+import trashIcon from "./img/휴지통.png";
+import calIcon from "./img/계산기.png";
 import React, { useState } from "react";
-import IconButton from "./components/IconButton";
 import WeatherModal from "./components/WeatherModal";
 import "./assets/weatherModal.css"; // assets 폴더에서 스타일 import
 import "./assets/main.css";
@@ -33,16 +39,17 @@ const App = () => {
           className="bottom"
           style={{ backgroundColor: "rgba(255, 255, 255, 0.363)" }}
         >
-          <IconButton imgSrc="../img/메모장.png" altText="메모장" />
-          <IconButton imgSrc="../img/사진.png" altText="갤러리" />
-          <IconButton imgSrc="../img/주식.png" altText="코인" />
-          <IconButton imgSrc="../img/캘린더.png" altText="캘린더" />
-          <IconButton
-            imgSrc="../img/날씨.png"
-            altText="날씨"
+          <img src={memoIcon} alt="메모장" />
+          <img src={photoIcon} alt="사진" />
+          <img src={stockIcon} alt="주식" />
+          <img src={calendarIcon} alt="달력" />
+          <img
+            src={weatherIcon}
+            alt="날씨"
             onClick={handleWeatherButtonClick}
           />
-          <IconButton imgSrc="../img/휴지통.png" altText="휴지통" />
+          <img src={trashIcon} alt="휴지통" />
+          <img src={calIcon} alt="계산기" />
         </div>
       </div>
       <WeatherModal
