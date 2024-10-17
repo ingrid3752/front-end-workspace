@@ -223,10 +223,6 @@ const Weather = () => {
                         <h3>{new Date(day.dt_txt).toLocaleDateString()}</h3>
                         <p>온도: {Math.round(day.main.temp)}°C</p>
                         <p>날씨: {translateWeather(day.weather[0].main)}</p>
-                        <img
-                          src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-                          alt="날씨 아이콘"
-                        />
                       </div>
                     ))}
                   </div>

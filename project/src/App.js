@@ -6,7 +6,7 @@ import weatherIcon from "./img/날씨.png";
 import trashIcon from "./img/휴지통.png";
 import calIcon from "./img/계산기.png";
 import React, { useState } from "react";
-import WeatherModal from "./components/WeatherModal";
+import WeatherModal2 from "./components/WeatherModal2";
 import "./assets/weatherModal.css"; // assets 폴더에서 스타일 import
 import "./assets/main.css";
 
@@ -52,7 +52,7 @@ const App = () => {
           <img src={calIcon} alt="계산기" />
         </div>
       </div>
-      <WeatherModal
+      <WeatherModal2
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
         weatherData={weatherData}
