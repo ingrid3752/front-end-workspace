@@ -16,8 +16,9 @@
   border: 1px solid #888;
   width: 80%;
   max-width: 600px;
+  font-size: large;
   background-color: transparent; /* 투명 배경 */
-  color: white; /* 텍스트 색상 */
+  color: rgb(255, 255, 255); /* 텍스트 색상 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
 }
 
