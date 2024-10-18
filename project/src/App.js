@@ -10,9 +10,9 @@ import calIcon from "./img/계산기.png";
 import "./assets/weatherModal.css";
 import "./assets/main.css";
 
-const API_KEY = "464ce89f05d310c3ebcdad8c20e4af4d";
-
 const App = () => {
+  const API_KEY = "464ce89f05d310c3ebcdad8c20e4af4d";
+
   const [modalVisible, setModalVisible] = useState(false);
   const [weatherData, setWeatherData] = useState({
     date: "",
@@ -72,6 +72,7 @@ const App = () => {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
       );
+
       const data = response.data;
 
       const now = new Date();
