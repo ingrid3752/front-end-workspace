@@ -7,6 +7,7 @@ import calendarIcon from "./img/캘린더.png";
 import weatherIcon from "./img/날씨.png";
 import trashIcon from "./img/휴지통.png";
 import calIcon from "./img/계산기.png";
+import { TbReload } from "react-icons/tb";
 import "./assets/weatherModal.css";
 import "./assets/main.css";
 
@@ -51,13 +52,11 @@ const App = () => {
         "shower rain",
         "thunderstorm",
       ];
-
       return rainyConditions.some((condition) =>
         description.includes(condition)
       );
     };
 
-    // 날씨 상태를 변환하는 함수
     const getWeatherDescription = (description) => {
       if (description.includes("clear")) return "맑음";
       if (isRainyWeather(description)) return "비";
@@ -65,7 +64,21 @@ const App = () => {
       if (description.includes("snow")) return "눈";
       if (description.includes("thunderstorm")) return "뇌우";
       if (description.includes("mist")) return "안개";
-      return "기타"; // 기본값
+      return "기타";
+    };
+
+    // 요일을 반환하는 함수
+    const getDayOfWeek = (date) => {
+      const days = [
+        "일요일",
+        "월요일",
+        "화요일",
+        "수요일",
+        "목요일",
+        "금요일",
+        "토요일",
+      ];
+      return days[date.getDay()];
     };
 
     try {
@@ -76,51 +89,107 @@ const App = () => {
       const data = response.data;
 
       const now = new Date();
-      const dateOptions = { year: "numeric", month: "numeric", day: "numeric" };
       const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
-      const formattedDate = `${now.toLocaleDateString(
-        "ko-KR",
-        dateOptions
-      )} ${now.toLocaleTimeString("ko-KR", timeOptions)}`;
+      const formattedDate = `${
+        now.getMonth() + 1
+      }월 ${now.getDate()}일 ${now.toLocaleTimeString("ko-KR", timeOptions)}`;
 
       const currentTemp = Math.round(data.list[0].main.temp);
       const currentDescription = data.list[0].weather[0].description;
 
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const tomorrowDate = tomorrow.toISOString().split("T")[0];
-
-      let maxTemp = -Infinity;
-      let minTemp = Infinity;
+      const todayDate = now.toISOString().split("T")[0];
+      let maxTempToday = -Infinity;
+      let minTempToday = Infinity;
 
       data.list.forEach((entry) => {
         const entryDate = entry.dt_txt.split(" ")[0];
-        if (entryDate === tomorrowDate) {
+        if (entryDate === todayDate) {
           const temp = entry.main.temp;
-          maxTemp = Math.max(maxTemp, temp);
-          minTemp = Math.min(minTemp, temp);
+          maxTempToday = Math.max(maxTempToday, temp);
+          minTempToday = Math.min(minTempToday, temp);
         }
+      });
+
+      // 내일 날짜 및 기온 데이터
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowDateString = tomorrow.toISOString().split("T")[0];
+      const formattedTomorrowDate = `${
+        tomorrow.getMonth() + 1
+      }월 ${tomorrow.getDate()}일 ${getDayOfWeek(tomorrow)}`;
+
+      let maxTempTomorrow = -Infinity;
+      let minTempTomorrow = Infinity;
+
+      data.list.forEach((entry) => {
+        const entryDate = entry.dt_txt.split(" ")[0];
+        if (entryDate === tomorrowDateString) {
+          const temp = entry.main.temp;
+          maxTempTomorrow = Math.max(maxTempTomorrow, temp);
+          minTempTomorrow = Math.min(minTempTomorrow, temp);
+        }
+      });
+
+      // +2일, +3일, +4일 기온 데이터
+      const daysAhead = [2, 3, 4]; // 2일, 3일, 4일
+      const futureWeather = daysAhead.map((days) => {
+        const futureDate = new Date();
+        futureDate.setDate(now.getDate() + days);
+        const futureDateString = futureDate.toISOString().split("T")[0];
+
+        let maxTempFuture = -Infinity;
+        let minTempFuture = Infinity;
+
+        data.list.forEach((entry) => {
+          const entryDate = entry.dt_txt.split(" ")[0];
+          if (entryDate === futureDateString) {
+            const temp = entry.main.temp;
+            maxTempFuture = Math.max(maxTempFuture, temp);
+            minTempFuture = Math.min(minTempFuture, temp);
+          }
+        });
+
+        return {
+          formattedDate: `${
+            futureDate.getMonth() + 1
+          }월 ${futureDate.getDate()}일 ${getDayOfWeek(futureDate)}`,
+          maxTemp:
+            maxTempFuture !== -Infinity
+              ? `${Math.round(maxTempFuture)}°`
+              : "데이터 없음",
+          minTemp:
+            minTempFuture !== Infinity
+              ? `${Math.round(minTempFuture)}°`
+              : "데이터 없음",
+        };
       });
 
       const modalClass = isRainyWeather(currentDescription) ? "rain" : "clear";
 
-      // 상태 업데이트
       setWeatherData({
         date: formattedDate,
-        temp: `${currentTemp}°C`,
-        description: getWeatherDescription(currentDescription), // 변환된 날씨 설명
-        maxTemp:
-          maxTemp !== -Infinity ? `${Math.round(maxTemp)}°C` : "데이터 없음",
-        minTemp:
-          minTemp !== Infinity ? `${Math.round(minTemp)}°C` : "데이터 없음",
-        modalClass: modalClass,
+        temp: `${currentTemp}°`,
+        description: getWeatherDescription(currentDescription),
+        maxTemp: `${Math.round(maxTempTomorrow)}°`, // 내일 최고 기온
+        minTemp: `${Math.round(minTempTomorrow)}°`, // 내일 최저 기온
+        todayMaxTemp:
+          maxTempToday !== -Infinity
+            ? `${Math.round(maxTempToday)}°`
+            : "데이터 없음",
+        todayMinTemp:
+          minTempToday !== Infinity
+            ? `${Math.round(minTempToday)}°`
+            : "데이터 없음",
+        tomorrowDate: formattedTomorrowDate,
+        futureWeather, // 예보된 날씨 정보 추가
+        modalClass,
       });
+
       setModalVisible(true);
     } catch (error) {
       console.error("날씨 정보를 가져오는 중 오류 발생:", error);
     }
   };
-
   const onGeoError = () => {
     alert("위치를 찾을 수 없습니다.");
   };
@@ -129,7 +198,11 @@ const App = () => {
     setModalVisible(false);
   };
 
-  // 드래그 이벤트
+  const handleRefresh = () => {
+    geoFindMe(); // 새로고침
+  };
+
+  // 드래그
   const handleMouseDown = (e) => {
     setIsDragging(true);
     setOffset({
@@ -203,6 +276,7 @@ const App = () => {
           </div>
         </div>
       </div>
+
       {modalVisible && (
         <div className="modal">
           <div
@@ -213,13 +287,33 @@ const App = () => {
             <span className="close" onClick={handleCloseModal}>
               &times;
             </span>
+            <button className="refresh" onClick={handleRefresh}>
+              <TbReload size="20" color="#fff" />
+            </button>
             <div className="weather-info">
-              <p id="data">{weatherData.date}</p>
-              <p id="temp">현재 기온: {weatherData.temp}</p>
-              <p id="weather">날씨: {weatherData.description}</p>
-              <h3>내일의 날씨</h3>
-              <p id="max-temp">최고 기온: {weatherData.maxTemp}</p>
-              <p id="min-temp">최저 기온: {weatherData.minTemp}</p>
+              <p id="date">{weatherData.date}</p>
+              <p id="temp">{weatherData.temp}</p>
+              <p id="weather">{weatherData.description}</p>
+              <p id="today">
+                최고: {weatherData.todayMaxTemp} 최저:{" "}
+                {weatherData.todayMinTemp}
+              </p>
+
+              {/* 내일의 날씨 정보 */}
+              <h3>{weatherData.tomorrowDate}</h3>
+              <p id="tomorrow">
+                최고: {weatherData.maxTemp} 최저: {weatherData.minTemp}
+              </p>
+
+              {/* +2일, +3일, +4일의 날씨 정보 표시 */}
+              {weatherData.futureWeather.map((weather, index) => (
+                <div key={index}>
+                  <h3>{weather.formattedDate}</h3>
+                  <p>
+                    최고: {weather.maxTemp} 최저: {weather.minTemp}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
