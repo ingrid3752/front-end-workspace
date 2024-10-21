@@ -13,9 +13,10 @@ body {
   background-size: cover;
   overflow-x: hidden;
   overflow-y: hidden;
-  font-family: "Apple SD Gothic Neo", sans-serif;
+  font-family: "Apple SD Gothic Neo";
+  font-weight: 400;
+  font-style: normal;
 }
-
 .main {
   display: flex;
   align-items: center;
@@ -43,7 +44,7 @@ body {
 img {
   width: 70px;
   height: 70px;
-  box-shadow: 10px 10px 10px #3a3a3a81;
+  box-shadow: 10px, 10px, 10pxs, 10px;
   filter: drop-shadow(5px 5px 5px #3a3a3a81);
 }
 .icon {
@@ -55,7 +56,6 @@ img {
   margin-top: 15px;
   color: white;
 }
-
 .floating-window {
   position: absolute;
   top: 45%;
