@@ -67,7 +67,7 @@ const App = () => {
       return "기타";
     };
 
-    // 요일을 반환하는 함수
+    // 요일
     const getDayOfWeek = (date) => {
       const days = [
         "일요일",
@@ -131,7 +131,7 @@ const App = () => {
       });
 
       // +2일, +3일, +4일 기온 데이터
-      const daysAhead = [2, 3, 4]; // 2일, 3일, 4일
+      const daysAhead = [2, 3, 4];
       const futureWeather = daysAhead.map((days) => {
         const futureDate = new Date();
         futureDate.setDate(now.getDate() + days);
@@ -299,13 +299,11 @@ const App = () => {
                 {weatherData.todayMinTemp}
               </p>
 
-              {/* 내일의 날씨 정보 */}
               <h3>{weatherData.tomorrowDate}</h3>
               <p id="tomorrow">
                 최고: {weatherData.maxTemp} 최저: {weatherData.minTemp}
               </p>
 
-              {/* +2일, +3일, +4일의 날씨 정보 표시 */}
               {weatherData.futureWeather.map((weather, index) => (
                 <div key={index}>
                   <h3>{weather.formattedDate}</h3>
