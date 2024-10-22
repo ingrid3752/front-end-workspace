@@ -1,7 +1,5 @@
-.modal {
-  display: flex; /* Flexbox로 중앙 정렬 */
-  align-items: center;
-  justify-content: center;
+.modal3 {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,60 +7,122 @@
   height: 100%;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  margin: auto;
+  position: absolute;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
-  background-color: transparent;
-  color: white;
+  border: 1px solid none;
+  width: auto;
+  height: 400px;
+  font-size: large;
+  color: rgb(255, 255, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
 }
 
 .weather-info {
   position: relative;
   z-index: 10;
+  text-align: center;
+  margin-top: 10px;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.weather-info p {
+  margin: 5px 0;
+}
+
+.weather-info h4 {
+  margin: 0px;
+  font-size: 1.2em;
 }
 
 .close {
-  color: #aaa;
-  float: right;
+  color: #ffffff;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
-  cursor: pointer;
 }
 
+/* 맑음 */
 .clear {
-  background-image: url("./img/맑음.jpg");
+  background-image: url("../img/맑음.png");
+}
+.clear .futureGray {
+  background-color: rgba(188, 227, 253, 0.61);
+  border-radius: 10px;
+}
+.clear .futureGray .futurep {
+  color: rgb(236, 235, 235);
 }
 
+/* 흐림 */
 .clouds {
-  background-image: url("./img/구름많음.jpg");
+  background-image: url("../img/흐림.jpg");
+}
+.clouds .futureGray {
+  background-color: rgba(138, 138, 138, 0.61);
+  border-radius: 10px;
+}
+.clouds .futureGray .futurep {
+  color: rgb(236, 235, 235);
 }
 
+/* 비 */
 .rain {
-  background-image: url("./img/비.jpg");
+  background-image: url("../img/비.gif");
+}
+.rain .futureGray {
+  background-color: rgba(107, 125, 148, 0.61);
+  border-radius: 10px;
+}
+.rain .futureGray .futurep {
+  color: rgb(236, 235, 235);
 }
 
+/* 눈 */
 .snow {
-  background-image: url("./img/눈.jpg");
+  background-image: url("../img/눈.jpg");
+}
+.snow .futureGray {
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 10px;
 }
 
+/* 뇌우 */
 .thunderstorm {
-  background-image: url("./img/뇌우.jpg");
+  background-image: url("../img/뇌우.jpg");
+}
+.thunderstorm .futureGray {
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 10px;
 }
 
+/* 안개 */
 .mist {
-  background-image: url("./img/안개.jpg");
+  background-image: url("../img/안개.jpg");
+}
+.mist .futureGray {
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 10px;
 }
 
 .modal-content.clear,
@@ -73,7 +133,59 @@
 .modal-content.mist {
   background-size: cover;
   background-position: center;
-  height: auto;
-  width: 100%;
-  padding: 20px;
+  background-repeat: no-repeat;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.363);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+}
+
+#temp {
+  font-size: 4em;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+}
+
+.ppp {
+  font-size: 15px;
+}
+.width {
+  display: flex;
+  height: 150px;
+}
+.widwid {
+  margin: 10px;
+}
+
+.small-icon {
+  width: 25px;
+  height: 25px;
+}
+.futurep {
+  font-size: 0.8rem;
+  padding-top: 10px;
+  color: rgb(175, 173, 173);
+}
+hr {
+  width: 90%;
+  color: rgb(204, 204, 204);
+  border: 0.5px solid rgb(204, 204, 204);
+}
+#weather {
+  font-size: 1rem;
+  margin: 0px;
+}
+#today {
+  font-size: 1rem;
+  margin: 0px;
 }
