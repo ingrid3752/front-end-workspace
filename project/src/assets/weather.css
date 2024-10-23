@@ -10,13 +10,12 @@
   justify-content: center;
   align-items: center;
 }
-
 .modal-content {
   position: absolute;
   padding: 20px;
   border: 1px solid none;
   width: auto;
-  height: 400px;
+  height: 360px;
   font-size: large;
   color: rgb(255, 255, 255);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -25,35 +24,27 @@
   flex-direction: column;
   border-radius: 10px;
 }
-
 .weather-info {
   position: relative;
   z-index: 10;
   text-align: center;
   margin-top: 10px;
-  padding: 20px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-
 .weather-info p {
   margin: 5px 0;
 }
-
 .weather-info h4 {
   margin: 0px;
   font-size: 1.2em;
 }
-
 .close {
-  color: #ffffff;
-  font-size: 28px;
-  font-weight: bold;
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  right: 20px;
+  border: none;
+  background: none;
 }
 
 .close:hover,
@@ -61,7 +52,6 @@
   color: black;
   text-decoration: none;
 }
-
 /* 맑음 */
 .clear {
   background-image: url("../img/맑음.png");
@@ -73,8 +63,7 @@
 .clear .futureGray .futurep {
   color: rgb(236, 235, 235);
 }
-
-/* 흐림 */
+/* 흐림*/
 .clouds {
   background-image: url("../img/흐림.jpg");
 }
@@ -85,7 +74,6 @@
 .clouds .futureGray .futurep {
   color: rgb(236, 235, 235);
 }
-
 /* 비 */
 .rain {
   background-image: url("../img/비.gif");
@@ -97,34 +85,39 @@
 .rain .futureGray .futurep {
   color: rgb(236, 235, 235);
 }
-
 /* 눈 */
 .snow {
-  background-image: url("../img/눈.jpg");
+  background-image: url("../img/눈.gif");
 }
 .snow .futureGray {
-  background-color: rgba(255, 255, 255, 0.61);
+  background-color: rgba(184, 182, 182, 0.479);
   border-radius: 10px;
 }
-
+.snow .futureGray .futurep {
+  color: rgb(236, 235, 235);
+}
 /* 뇌우 */
 .thunderstorm {
   background-image: url("../img/뇌우.jpg");
 }
 .thunderstorm .futureGray {
-  background-color: rgba(255, 255, 255, 0.61);
+  background-color: rgba(70, 69, 69, 0.74);
   border-radius: 10px;
 }
-
+.thunderstorm .futureGray .futurep {
+  color: rgb(236, 235, 235);
+}
 /* 안개 */
 .mist {
   background-image: url("../img/안개.jpg");
 }
 .mist .futureGray {
-  background-color: rgba(255, 255, 255, 0.61);
+  background-color: rgba(70, 69, 69, 0.74);
   border-radius: 10px;
 }
-
+.mist .futureGray .futurep {
+  color: rgb(236, 235, 235);
+}
 .modal-content.clear,
 .modal-content.clouds,
 .modal-content.rain,
@@ -134,26 +127,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.363);
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 20px;
-}
-
-#temp {
-  font-size: 4em;
-  font-weight: bold;
-  margin: 0px;
-  padding: 0px;
+  height: 385px;
 }
 
 .ppp {
@@ -163,23 +137,33 @@
   display: flex;
   height: 150px;
 }
+.width h4 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
 .widwid {
   margin: 10px;
+  text-align: center;
+  margin-top: 30px;
 }
-
 .small-icon {
   width: 25px;
   height: 25px;
+}
+.futureGray {
+  margin-top: 15px;
 }
 .futurep {
   font-size: 0.8rem;
   padding-top: 10px;
   color: rgb(175, 173, 173);
+  margin-left: 0px;
 }
 hr {
   width: 90%;
   color: rgb(204, 204, 204);
   border: 0.5px solid rgb(204, 204, 204);
+  margin-left: 15px;
 }
 #weather {
   font-size: 1rem;
@@ -188,4 +172,10 @@ hr {
 #today {
   font-size: 1rem;
   margin: 0px;
+}
+#temp {
+  font-size: 5em;
+  font-weight: lighter;
+  margin-bottom: 10px;
+  padding: 0px;
 }
