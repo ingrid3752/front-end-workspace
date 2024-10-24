@@ -7,17 +7,20 @@ import weatherIcon from "./img/날씨.png";
 import trashIcon from "./img/휴지통.png";
 import machineIcon from "./img/계산기.png";
 import Machine from "./components/machine.js";
-import Weather from "./api/Weather.js"; // Weather 컴포넌트 추가
+import Weather from "./api/Weather.js";
+import Calendar from "./api/Calendar.js";
 import useMain from "./main.js";
 import "./assets/weather.css";
 import "./assets/reset.css";
 import "./assets/App.css";
 import "./assets/machine.css";
+import "./assets/calendar.css";
 
 const App = () => {
   const [isMemoOpen, setMemoOpen] = useState(false);
   const [isMachineOpen, setMachineOpen] = useState(false);
   const [isWeatherOpen, setWeatherOpen] = useState(false);
+  const [isCalendarOpen, setCalendarOpen] = useState(false);
   const [dragging, setDragging] = useState(false);
   const [currentModal, setCurrentModal] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -25,12 +28,14 @@ const App = () => {
   const memoModalRef = useRef(null);
   const machineModalRef = useRef(null);
   const weatherModalRef = useRef(null);
+  const calendarModalRef = useRef(null);
 
   const { startResize } = useMain(memoModalRef);
 
   const toggleMemo = () => setMemoOpen((prev) => !prev);
   const toggleMachine = () => setMachineOpen((prev) => !prev);
   const toggleWeather = () => setWeatherOpen((prev) => !prev);
+  const toggleCalendar = () => setCalendarOpen((prev) => !prev);
 
   // 드래그 시작
   const handleMouseDown = (e, ref) => {
@@ -131,7 +136,7 @@ const App = () => {
               <div className="modal_body2">
                 <div
                   className="mheader"
-                  onMouseDown={(e) => handleMouseDown(e, machineModalRef)} // 드래그 핸들러 추가
+                  onMouseDown={(e) => handleMouseDown(e, machineModalRef)}
                 >
                   <button
                     className="window-close2"
@@ -148,8 +153,14 @@ const App = () => {
               modalVisible={isWeatherOpen}
               handleCloseModal={toggleWeather}
               ref={weatherModalRef}
-              onMouseDown={(e) => handleMouseDown(e, weatherModalRef)} // 드래그 핸들러 추가
+              onMouseDown={(e) => handleMouseDown(e, weatherModalRef)}
             />
+          )}
+
+          {isCalendarOpen && (
+            <div className="calendar-div">
+              <Calendar />
+            </div>
           )}
         </div>
 
@@ -174,7 +185,7 @@ const App = () => {
               </button>
             </div>
             <div className="icon">
-              <button className="btn-open-modal">
+              <button className="btn-open-modal" onClick={toggleCalendar}>
                 <img src={calendarIcon} alt="캘린더" />
               </button>
             </div>

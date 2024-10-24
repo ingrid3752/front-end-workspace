@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const CalendarComponent = () => {
+const Calendar = () => {
   const [date, setDate] = useState(new Date());
 
   const handleDateChange = (newDate) => {
@@ -19,4 +19,4 @@ const CalendarComponent = () => {
   );
 };
 
-export default CalendarComponent;
+export default Calendar;

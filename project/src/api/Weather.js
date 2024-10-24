@@ -200,42 +200,44 @@ const Weather = ({ modalVisible, handleCloseModal }) => {
   }, []);
   if (!modalVisible) return null;
   return (
-    <div className="modal3">
-      <div
-        className={`modal-content ${weatherData.modalClass}`}
-        style={{ left: modalPosition.x, top: modalPosition.y }}
-        onMouseDown={handleMouseDown}
-      >
-        <button className="close" onClick={handleCloseModal}>
-          <FaCircle size="12" color="#EE5F5B" />
-        </button>
-        <div className="weather-info">
-          <p id="temp">{weatherData.temp}</p>
-          <p id="weather">{weatherData.description}</p>
-          <p id="today">
-            최고: {weatherData.todayMaxTemp}&nbsp; 최저:{" "}
-            {weatherData.todayMinTemp}
-          </p>
-          <div className="futureGray">
-            <p className="futurep">
-              <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
-              &nbsp; 4일간의 일기예보
+    <>
+      <div className="modal3">
+        <div
+          className={`modal-content ${weatherData.modalClass}`}
+          style={{ left: modalPosition.x, top: modalPosition.y }}
+          onMouseDown={handleMouseDown}
+        >
+          <button className="close" onClick={handleCloseModal}>
+            <FaCircle size="12" color="#EE5F5B" />
+          </button>
+          <div className="weather-info">
+            <p id="temp">{weatherData.temp}</p>
+            <p id="weather">{weatherData.description}</p>
+            <p id="today">
+              최고: {weatherData.todayMaxTemp}&nbsp; 최저:{" "}
+              {weatherData.todayMinTemp}
             </p>
-            <hr />
-            <div className="width">
-              {weatherData.futureWeather.map((weather, index) => (
-                <div key={index} className="widwid">
-                  <h4>{weather.formattedDate}</h4>
-                  <img src={weather.icon} className="small-icon" />
-                  <p className="ppp">최고: {weather.maxTemp}</p>
-                  <p className="ppp">최저: {weather.minTemp}</p>
-                </div>
-              ))}
+            <div className="futureGray">
+              <p className="futurep">
+                <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
+                &nbsp; 4일간의 일기예보
+              </p>
+              <hr />
+              <div className="width">
+                {weatherData.futureWeather.map((weather, index) => (
+                  <div key={index} className="widwid">
+                    <h4>{weather.formattedDate}</h4>
+                    <img src={weather.icon} className="small-icon" />
+                    <p className="ppp">최고: {weather.maxTemp}</p>
+                    <p className="ppp">최저: {weather.minTemp}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Weather;
