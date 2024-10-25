@@ -159,7 +159,12 @@ const App = () => {
 
           {isCalendarOpen && (
             <div className="calendar-div">
-              <Calendar />
+              <Calendar
+                modalVisible={isCalendarOpen}
+                handleCloseModal={toggleCalendar}
+                ref={calendarModalRef}
+                onMouseDown={(e) => handleMouseDown(e, calendarModalRef)}
+              />
             </div>
           )}
         </div>

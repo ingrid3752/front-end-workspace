@@ -45,12 +45,21 @@
   font-size: 1rem;
   margin-top: 15px;
 }
+.fc .fc-day-sun {
+  background-color: #f5f5f5;
+}
+.fc .fc-day-sat {
+  background-color: #f5f5f5;
+}
 .fc .fc-day-sun a {
   color: red;
 }
 /* 토요일 날짜: 파란색 */
 .fc .fc-day-sat a {
   color: blue;
+}
+.fc-scrollgrid-section fc-scrollgrid-section-header {
+  background-color: aqua;
 }
 /* <div class="fc-scrollgrid-sync-inner"><a aria-label="일요일" class="fc-col-header-cell-cushion">일</a></div> */
 /* <button type="button" title="This month" disabled="" aria-pressed="false" class="fc-today-button fc-button fc-button-primary">today</button> */
