@@ -79,7 +79,9 @@ const App = () => {
                 height: "300px",
                 left: "100px",
                 top: "100px",
+                zIndex: 10, // 모달의 zIndex 설정
               }}
+              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
             >
               <div className="floating-window">
                 <div
@@ -131,7 +133,9 @@ const App = () => {
                 height: "400px",
                 left: "150px",
                 top: "150px",
+                zIndex: 10, // 모달의 zIndex 설정
               }}
+              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
             >
               <div className="modal_body2">
                 <div
@@ -154,11 +158,17 @@ const App = () => {
               handleCloseModal={toggleWeather}
               ref={weatherModalRef}
               onMouseDown={(e) => handleMouseDown(e, weatherModalRef)}
+              style={{ zIndex: 10 }} // zIndex 설정
+              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
             />
           )}
 
           {isCalendarOpen && (
-            <div className="calendar-div">
+            <div
+              className="calendar-div"
+              style={{ zIndex: 10 }}
+              onClick={(e) => e.stopPropagation()}
+            >
               <Calendar
                 modalVisible={isCalendarOpen}
                 handleCloseModal={toggleCalendar}
