@@ -25,7 +25,6 @@ body {
   width: 100%;
   height: 90vh;
   font-size: 5rem;
-  text-align: center;
 }
 /* 모서리에서 크기를 조절할 수 있는 영역 (resizer) */
 .resizer {
@@ -70,7 +69,7 @@ body {
 img {
   width: 70px;
   height: 70px;
-  box-shadow: 10px, 10px, 10pxs, 10px;
+  box-shadow: 10px, 10px, 10px, 10px;
   filter: drop-shadow(5px 5px 5px #3a3a3a81);
 }
 .icon {
@@ -87,16 +86,21 @@ img {
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 70%;
   height: 70%;
   background-color: #f6f6f6;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  min-width: 10%;
+  min-height: 30%;
+  max-width: 70%;
+  max-height: 70%;
 }
 
 .window-header {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -140,23 +144,10 @@ img {
 }
 .window-close:hover {
   background-color: #f04e48;
-  border: 1px solid white;
+  border: 1px solid #e6e6e6;
 }
 .window-content {
   padding: 12px;
-}
-.modal {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 20%;
-  height: 100%;
-  min-width: 30%;
-  min-height: 30%;
-  max-width: 100%;
-  max-height: 100%;
 }
 
 .modal_body {
@@ -169,31 +160,31 @@ img {
 }
 
 /* .modal2 {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    width: 20%;
-    height: 100%;
-    min-width: 30%;
-    min-height: 30%;
-    max-width: 100%;
-    max-height: 100%;
-  } */
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  min-width: 30%;
+  min-height: 30%;
+  max-width: 100%;
+  max-height: 100%;
+} */
 /* .modal_body {
-    position: absolute;
-    top: 50%;
-    font-size: 1rem;
-    width: 150px;
-    height: 200px;
-    padding: 40px;
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-    transform: translateY(-50%);
-  } */
+  position: absolute;
+  top: 50%;
+  font-size: 1rem;
+  width: 150px;
+  height: 200px;
+  padding: 40px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  transform: translateY(-50%);
+} */
 .btn-open-modal {
   background-color: rgba(255, 255, 255, 0);
   border: none;
@@ -201,16 +192,18 @@ img {
 .btn-open-modal:hover {
   cursor: pointer;
 }
+
 textarea {
   font-family: "Apple SD Gothic Neo";
   border: none;
   width: 100%;
-  height: 100%;
+  height: 90%;
   font-size: 2rem;
   outline: none;
 }
 .icon img {
   transition: all 0.2s linear;
+  z-index: 4;
 }
 .icon :hover img {
   transform: scale(1.2);

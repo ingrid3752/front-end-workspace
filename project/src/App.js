@@ -1,4 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import "./assets/reset.css";
+import "./assets/App.css";
 import memoIcon from "./img/메모장.png";
 import photoIcon from "./img/사진.png";
 import stockIcon from "./img/주식.png";
@@ -7,20 +9,21 @@ import weatherIcon from "./img/날씨.png";
 import trashIcon from "./img/휴지통.png";
 import machineIcon from "./img/계산기.png";
 import Machine from "./components/machine.js";
-import Weather from "./api/Weather.js";
-import Calendar from "./api/Calendar.js";
+import Weather from "./api/Weather.js"; // Weather 컴포넌트 추가
 import useMain from "./main.js";
 import "./assets/weather.css";
-import "./assets/reset.css";
-import "./assets/App.css";
-import "./assets/machine.css";
+import Calendar from "./api/Calendar.js";
 import "./assets/calendar.css";
+import calendarsmall from "./api/Calendarsmall.js";
 
 const App = () => {
   const [isMemoOpen, setMemoOpen] = useState(false);
   const [isMachineOpen, setMachineOpen] = useState(false);
   const [isWeatherOpen, setWeatherOpen] = useState(false);
   const [isCalendarOpen, setCalendarOpen] = useState(false);
+  const [openModals, setOpenModals] = useState([]); // 열려있는 모달 상태
+  const [memoText, setMemoText] = useState(""); // 메모 텍스트 상태 추가
+
   const [dragging, setDragging] = useState(false);
   const [currentModal, setCurrentModal] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -29,13 +32,28 @@ const App = () => {
   const machineModalRef = useRef(null);
   const weatherModalRef = useRef(null);
   const calendarModalRef = useRef(null);
-
-  const { startResize } = useMain(memoModalRef);
+  //const { startResize } = useMain(memoModalRef);
 
   const toggleMemo = () => setMemoOpen((prev) => !prev);
   const toggleMachine = () => setMachineOpen((prev) => !prev);
   const toggleWeather = () => setWeatherOpen((prev) => !prev);
   const toggleCalendar = () => setCalendarOpen((prev) => !prev);
+
+  // 로컬 스토리지에서 메모장 텍스트 불러오기
+  useEffect(() => {
+    const savedMemo = localStorage.getItem("memoText");
+
+    if (savedMemo) {
+      setMemoText(savedMemo);
+    }
+  }, []);
+
+  // 텍스트가 변경될 때마다 로컬 스토리지에 저장
+  useEffect(() => {
+    if (memoText) {
+      localStorage.setItem("memoText", memoText);
+    }
+  }, [memoText]);
 
   // 드래그 시작
   const handleMouseDown = (e, ref) => {
@@ -61,6 +79,23 @@ const App = () => {
     setCurrentModal(null);
   };
 
+  // ESC 키를 눌렀을 때 모달을 닫는 기능
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      setMemoOpen(false);
+      setMachineOpen(false);
+      setWeatherOpen(false);
+      setCalendarOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <div id="root">
@@ -71,55 +106,41 @@ const App = () => {
         >
           {isMemoOpen && (
             <div
-              className="modal"
+              className="floating-window"
               ref={memoModalRef}
               style={{
                 position: "absolute",
-                width: "400px",
-                height: "300px",
                 left: "100px",
                 top: "100px",
-                zIndex: 10, // 모달의 zIndex 설정
               }}
-              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
             >
-              <div className="floating-window">
-                <div
-                  className="resizer nw"
-                  onMouseDown={(e) => startResize(e, e.target)}
-                ></div>
-                <div
-                  className="resizer ne"
-                  onMouseDown={(e) => startResize(e, e.target)}
-                ></div>
-                <div
-                  className="resizer sw"
-                  onMouseDown={(e) => startResize(e, e.target)}
-                ></div>
-                <div
-                  className="resizer se"
-                  onMouseDown={(e) => startResize(e, e.target)}
-                ></div>
-                <div
-                  className="window-header"
-                  onMouseDown={(e) => handleMouseDown(e, memoModalRef)}
-                >
-                  <div className="window-title">메모장</div>
-                  <div className="window-controls">
-                    <button
-                      className="window-close"
-                      onClick={toggleMemo}
-                    ></button>
-                  </div>
-                </div>
-                <div className="modal_body">
-                  <textarea
-                    id="memoInput"
-                    name="memo"
-                    placeholder="안녕~"
-                  ></textarea>
+              <div
+                className="window-header"
+                onMouseDown={(e) => handleMouseDown(e, memoModalRef)}
+              >
+                <div className="window-title">메모장</div>
+                <div className="window-controls">
+                  <button
+                    className="window-close"
+                    onClick={toggleMemo}
+                  ></button>
                 </div>
               </div>
+              <textarea
+                placeholder="안녕~"
+                value={memoText}
+                onChange={(e) => setMemoText(e.target.value)}
+                style={{
+                  width: "100%",
+                  height: "calc(100% - 30px)",
+                  border: "1px solid #ccc",
+                  outline: "none",
+                  padding: "5px",
+                  boxSizing: "border-box",
+                  resize: "none",
+                  overflowY: "auto",
+                }}
+              ></textarea>
             </div>
           )}
 
@@ -129,13 +150,9 @@ const App = () => {
               ref={machineModalRef}
               style={{
                 position: "absolute",
-                width: "400px",
-                height: "400px",
                 left: "150px",
                 top: "150px",
-                zIndex: 10, // 모달의 zIndex 설정
               }}
-              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
             >
               <div className="modal_body2">
                 <div
@@ -153,29 +170,31 @@ const App = () => {
           )}
 
           {isWeatherOpen && (
-            <Weather
-              modalVisible={isWeatherOpen}
-              handleCloseModal={toggleWeather}
+            <div
+              className="modal3"
               ref={weatherModalRef}
-              onMouseDown={(e) => handleMouseDown(e, weatherModalRef)}
-              style={{ zIndex: 10 }} // zIndex 설정
-              onClick={(e) => e.stopPropagation()} // 클릭 이벤트 전파 방지
-            />
+              style={{
+                position: "absolute",
+                width: "400px",
+                height: "400px",
+                left: "200px",
+                top: "200px",
+              }}
+            >
+              <Weather
+                modalVisible={isWeatherOpen}
+                handleCloseModal={toggleWeather}
+              />
+            </div>
           )}
 
           {isCalendarOpen && (
-            <div
-              className="calendar-div"
-              style={{ zIndex: 10 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Calendar
-                modalVisible={isCalendarOpen}
-                handleCloseModal={toggleCalendar}
-                ref={calendarModalRef}
-                onMouseDown={(e) => handleMouseDown(e, calendarModalRef)}
-              />
-            </div>
+            <Calendar
+              modalVisible={isCalendarOpen}
+              handleCloseModal={toggleCalendar}
+              ref={calendarModalRef}
+              onMouseDown={(e) => handleMouseDown(e, calendarModalRef)}
+            />
           )}
         </div>
 

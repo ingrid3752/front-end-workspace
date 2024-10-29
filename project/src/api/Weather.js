@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 // import { TbReload } from "react-icons/tb";
 import { FaCircle } from "react-icons/fa";
@@ -171,6 +171,7 @@ const Weather = ({ modalVisible, handleCloseModal }) => {
   // const handleRefresh = () => {
   //   geoFindMe(); // 새로고침
   // };
+
   // 드래그 기능
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -179,65 +180,72 @@ const Weather = ({ modalVisible, handleCloseModal }) => {
       y: e.clientY - modalPosition.y,
     });
   };
-  const handleMouseMove = (e) => {
-    if (isDragging) {
-      setModalPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
-    }
-  };
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (isDragging) {
+        setModalPosition({ x: e.clientX - offset.x, y: e.clientY - offset.y });
+      }
+    },
+    [isDragging, offset]
+  );
+
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
+
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isDragging]);
+  }, [handleMouseMove, handleMouseUp]);
   useEffect(() => {
     geoFindMe();
-  }, []);
+  }, [geoFindMe]);
+
   if (!modalVisible) return null;
   return (
-    <>
-      <div className="modal3">
-        <div
-          className={`modal-content ${weatherData.modalClass}`}
-          style={{ left: modalPosition.x, top: modalPosition.y }}
-          onMouseDown={handleMouseDown}
-        >
-          <button className="close" onClick={handleCloseModal}>
-            <FaCircle size="12" color="#EE5F5B" />
-          </button>
-          <div className="weather-info">
-            <p id="temp">{weatherData.temp}</p>
-            <p id="weather">{weatherData.description}</p>
-            <p id="today">
-              최고: {weatherData.todayMaxTemp}&nbsp; 최저:{" "}
-              {weatherData.todayMinTemp}
-            </p>
-            <div className="futureGray">
-              <p className="futurep">
-                <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
-                &nbsp; 4일간의 일기예보
-              </p>
-              <hr />
-              <div className="width">
-                {weatherData.futureWeather.map((weather, index) => (
-                  <div key={index} className="widwid">
-                    <h4>{weather.formattedDate}</h4>
-                    <img src={weather.icon} className="small-icon" />
-                    <p className="ppp">최고: {weather.maxTemp}</p>
-                    <p className="ppp">최저: {weather.minTemp}</p>
-                  </div>
-                ))}
+    <div
+      className={`modal-content ${weatherData.modalClass}`}
+      style={{ left: modalPosition.x, top: modalPosition.y }}
+      onMouseDown={handleMouseDown}
+    >
+      <button className="close" onClick={handleCloseModal}>
+        <FaCircle size="12" color="#EE5F5B" />
+      </button>
+      <div className="weather-info">
+        <p id="temp">{weatherData.temp}</p>
+        <p id="weather">{weatherData.description}</p>
+        <p id="today">
+          최고: {weatherData.todayMaxTemp}&nbsp; 최저:{" "}
+          {weatherData.todayMinTemp}
+        </p>
+        <div className="futureGray">
+          <p className="futurep">
+            <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
+            &nbsp; 4일간의 일기예보
+          </p>
+          <hr />
+          <div className="width">
+            {weatherData.futureWeather.map((weather, index) => (
+              <div key={index} className="widwid">
+                <h4>{weather.formattedDate}</h4>
+                <img
+                  src={weather.icon}
+                  className="small-icon"
+                  alt="날씨 아이콘"
+                />
+                <p className="ppp">최고: {weather.maxTemp}</p>
+                <p className="ppp">최저: {weather.minTemp}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Weather;

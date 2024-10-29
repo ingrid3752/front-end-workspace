@@ -1,18 +1,6 @@
-.calendar-div {
-  background-color: white;
-  width: 1000px;
-  height: 500px;
-  font-size: 2rem;
-  border-radius: 15px;
-}
-.calendar-container {
-  position: relative; /* 부모 요소에 추가 */
-  width: 100%; /* 필요에 따라 조정 */
-  height: 100%; /* 필요에 따라 조정 */
-}
 .fc-direction-ltr {
-  width: 100%;
-  height: 100%;
+  width: 1000px;
+  height: 600px;
   border: none;
 }
 .fc .fc-scrollgrid-section-liquid > td {
@@ -30,25 +18,98 @@
   font-size: 1rem;
 }
 /* .fc .fc-button-primary:disabled {
-  width: 100px;
-  height: 40px;
-  font-size: 1rem;
-}
-.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
-  width: 100px;
-  height: 40px;
-  font-size: 1rem;
-}
-.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
-  width: 100px;
-  height: 40px;
-  font-size: 1rem;
-} */
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+    width: 100px;
+    height: 40px;
+    font-size: 1rem;
+  } */
 .fc .fc-button {
-  width: 100px;
-  height: 40px;
+  width: 50px;
+  height: 30px;
   font-size: 1rem;
   margin-top: 15px;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  color: black;
+  font-weight: 100;
+  padding: 0px;
+  border: 1px solid rgb(167, 167, 167);
+}
+.fc .fc-toolbar-title {
+  margin-top: 30px;
+}
+.fc .fc-prev-button {
+  font-size: 1rem;
+  text-align: center;
+  width: 30px;
+  height: 25px;
+  margin-left: 5px;
+  border: 1px solid #ececec;
+  background-color: white;
+}
+.fc .fc-prev-button:hover {
+  background-color: #d8d8d8;
+  border: none;
+  color: black;
+}
+.fc .fc-prev-button:focus {
+  background-color: #d8d8d8;
+  border: none;
+  color: black;
+}
+.fc .fc-prev-button-active {
+  background-color: #d8d8d8;
+  border: none;
+  color: black;
+}
+.fc .fc-next-button {
+  font-size: 1rem;
+  text-align: center;
+  width: 30px;
+  height: 25px;
+  margin-left: 5px;
+  background-color: white;
+  border: 1px solid #ececec;
+}
+.fc .fc-next-button:hover {
+  background-color: #d8d8d8;
+  border: none;
+  color: black;
+}
+.fc .fc-today-button {
+  font-size: 1rem;
+  text-align: center;
+  width: 60px;
+  height: 25px;
+  margin-left: 5px;
+  border: 1px solid #ececec;
+  background-color: white;
+}
+.fc .fc-today-button:hover {
+  background-color: #d8d8d8;
+  border: none;
+  color: black;
+}
+.fc .fc-button-primary:disabled {
+  background-color: #f5f5f5;
+  color: black;
+  border: none;
+  border-radius: 5px;
+}
+.fc .fc-button .fc-icon {
+  top: 3px;
+  text-align: center;
+  font-size: 1.3rem;
 }
 .fc .fc-day-sun {
   background-color: #f5f5f5;
@@ -63,21 +124,132 @@
 .fc .fc-day-sat a {
   color: blue;
 }
-.fc-scrollgrid-section fc-scrollgrid-section-header {
-  background-color: aqua;
+.fc .fc-day-sat:nth-last-child(1) {
+  border-bottom-right-radius: 15px;
+}
+.calendarmain {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: end;
+  width: 1302px;
+  height: 630px;
+  border: none;
 }
 
-.draggable-header {
+.calendarside {
+  display: block;
+  width: 230px;
+  height: 630px;
+  background-color: #e6e6e6;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.sideheader {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  padding-left: 15px;
+}
+.sidetext {
   padding: 10px;
-  background-color: #f0f0f0;
-  cursor: move;
-  border-radius: 15px 15px 0 0; /* 상단 모서리 둥글게 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 약간의 그림자 효과 추가 */
+  font-size: 1rem;
+  width: 100%;
+  height: 400px;
+  background-color: #e6e6e6;
+}
+.sidetext p {
+  margin-top: 10px;
+  color: gray;
+}
+.sidetext button {
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  border: none;
+  color: black;
+}
+.sidetext button:focus {
+  background-color: #ee5f5b;
+  color: white;
+}
+#whckdgus:focus {
+  background-color: rgb(41, 219, 71);
+  color: white;
+}
+.smallcalendar {
+  border-top: 2px solid #dddddd;
+  background-color: #e6e6e6;
+  width: 100%;
+  height: 200px;
+}
+.background {
+  background-color: rgb(255, 255, 255);
+  border-bottom-right-radius: 15px;
+  /* border-radius: ; */
 }
 
-.header-title {
-  font-size: 1.5rem; /* 제목 크기 조정 */
+.calheader {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  width: 100%;
+  height: 30px;
+  border-top-right-radius: 15px;
 }
+.fc .fc-media-screen {
+  width: 500px;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 15px;
+}
+.headerbutton {
+  font-size: 1rem;
+  margin-top: 15px;
+  width: 80px;
+  height: 25px;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+}
+.headerbutton:hover {
+  background-color: #d8d8d8;
+}
+.headerbutton:focus {
+  background-color: #d8d8d8;
+}
+.calendar-div {
+  background-color: white;
+  width: 1000px;
+  height: 300px;
+  font-size: 2rem;
+  border-radius: 15px;
+}
+.fc .fc-media-screen {
+  border-bottom-right-radius: 15px;
+}
+
+.window-close3:hover {
+  background-color: #f04e48;
+  border: 1px solid #e6e6e6;
+}
+.window-close3 {
+  margin-top: 15px;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ee5f5b;
+  border: none;
+}
+
+/* fc-daygrid-day-events 이벤트 색 */
 
 /* <div class="fc-scrollgrid-sync-inner"><a aria-label="일요일" class="fc-col-header-cell-cushion">일</a></div> */
 /* <button type="button" title="This month" disabled="" aria-pressed="false" class="fc-today-button fc-button fc-button-primary">today</button> */
+/* fc-prev-button fc-button fc-button-primary */
+
+/* <td aria-labelledby="fc-dom-60" role="gridcell" data-date="2024-10-28" class="fc-day fc-day-mon fc-day-today fc-daygrid-day"><div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"><div class="fc-daygrid-day-top"><a aria-label="2024년 10월 28일" id="fc-dom-60" class="fc-daygrid-day-number">28</a></div><div class="fc-daygrid-day-events"><div class="fc-daygrid-day-bottom" style="margin-top: 0px;"></div></div><div class="fc-daygrid-day-bg"></div></div></td> */
+
+/* <button type="button" title="This month" aria-pressed="false" class="fc-today-button fc-button fc-button-primary" disabled="">today</button> */
