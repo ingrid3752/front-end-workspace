@@ -707,3 +707,59 @@ export default App;
 }
 
  -->
+
+ <!-- 
+ import React, { useEffect, useState } from 'react';
+
+const App = () => {
+  // 상태 변수를 선언합니다.
+  const [data, setData] = useState([]); // API로부터 받은 데이터를 저장할 상태
+  const [loading, setLoading] = useState(true); // 로딩 상태를 관리할 변수
+  const [error, setError] = useState(null); // 에러 상태를 관리할 변수
+
+  // useEffect 훅을 사용하여 컴포넌트가 마운트될 때 API를 호출합니다.
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // API 호출
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+          throw new Error('네트워크 응답이 정상이 아닙니다.');
+        }
+        const result = await response.json(); // JSON 형식으로 변환
+        setData(result); // 데이터를 상태에 저장
+      } catch (error) {
+        setError(error); // 에러 발생 시 에러 상태에 저장
+      } finally {
+        setLoading(false); // 로딩 상태 종료
+      }
+    };
+
+    fetchData(); // fetchData 함수 호출
+  }, []); // 빈 배열을 전달하여 컴포넌트가 처음 렌더링될 때만 호출되도록 설정
+
+  // 로딩 중일 때 보여줄 내용
+  if (loading) {
+    return <div>로딩 중...</div>;
+  }
+
+  // 에러가 발생했을 때 보여줄 내용
+  if (error) {
+    return <div>에러 발생: {error.message}</div>;
+  }
+
+  // 정상적으로 데이터를 받아온 경우
+  return (
+    <div>
+      <h1>받은 데이터</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>{item.name}</li> // 각 데이터 항목을 리스트로 표시
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;
+  -->
