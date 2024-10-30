@@ -8,9 +8,8 @@ import "../assets/calendar.css";
 
 const Calendar = () => {
   const [events, setEvents] = useState([]); // 이벤트 목록 관리
-  const [selectedColor, setSelectedColor] = useState("#3788d8"); // 기본 이벤트 색상
+  const [selectedColor, setSelectedColor] = useState("#3788D8"); // 기본 이벤트 색상
   const calendarRef = useRef(null); // FullCalendar 인스턴스 접근
-
   // 로컬 스토리지에서 이벤트 불러오기
   useEffect(() => {
     const storedEvents = localStorage.getItem("events");
@@ -18,14 +17,19 @@ const Calendar = () => {
       setEvents(JSON.parse(storedEvents));
     }
   }, []);
-
   // CSS 변수 변경 함수
   const handleChangeEventColor = (color) => {
     setSelectedColor(color); // 선택된 색상 저장
   };
-
   // 날짜 클릭 시 이벤트 추가
   const handleDateClick = (arg) => {
+    const eventsOnDate = events.filter((event) => event.start === arg.dateStr);
+
+    if (eventsOnDate.length >= 3) {
+      alert("추가할 수 있는 일정은 최대 3개입니다.");
+      return;
+    }
+
     const title = prompt("일정 제목을 입력하세요:");
     if (title) {
       const newEvent = {
@@ -33,18 +37,6 @@ const Calendar = () => {
         start: arg.dateStr,
         backgroundColor: selectedColor,
       };
-
-      // 같은 날짜에 이미 추가된 일정 수 확인
-      const eventsOnDate = events.filter(
-        (event) => event.start === arg.dateStr
-      );
-      // 하루에 최대 3개 일정추가제한
-      if (eventsOnDate.length >= 3) {
-        alert("같은 날짜에 최대 3개의 일정만 추가할 수 있습니다.");
-        return;
-      }
-
-      // 추가후 업데이트(로컬 스토리지 저장)
       const updatedEvents = [...events, newEvent];
       setEvents(updatedEvents);
       localStorage.setItem("events", JSON.stringify(updatedEvents));
@@ -63,7 +55,6 @@ const Calendar = () => {
       localStorage.setItem("events", JSON.stringify(updatedEvents));
     }
   };
-
   // 일정 드래그 후 업데이트
   const handleEventDrop = (info) => {
     const updatedEvents = events.map((event) => {
@@ -74,19 +65,16 @@ const Calendar = () => {
     });
     setEvents(updatedEvents);
   };
-
   // 날짜 일(badge) 제거
   const handleDayCellContent = (arg) => {
     const dayNumber = arg.dayNumberText.replace("일", "");
     return dayNumber;
   };
-
   // 뷰 전환 핸들러
   const handleViewChange = (view) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.changeView(view);
   };
-
   return (
     <div className="calendarmain">
       {/* 사이드 메뉴 */}
@@ -109,10 +97,12 @@ const Calendar = () => {
         </div>
         <div className="smallcalendar"></div>
       </div>
-
       {/* FullCalendar 본체 */}
       <div className="calendar-div">
         <div className="calheader">
+          <div className="calheaderplus">
+            <button className="calendarplus">+</button>
+          </div>
           <button
             onClick={() => handleViewChange("dayGridMonth")}
             className="headerbutton"
@@ -138,7 +128,6 @@ const Calendar = () => {
             월
           </button>
         </div>
-
         <div className="background">
           <FullCalendar
             ref={calendarRef}
@@ -173,5 +162,4 @@ const Calendar = () => {
     </div>
   );
 };
-
 export default Calendar;

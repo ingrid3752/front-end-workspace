@@ -10,43 +10,29 @@ import trashIcon from "./img/휴지통.png";
 import machineIcon from "./img/계산기.png";
 import Machine from "./components/machine.js";
 import Weather from "./api/Weather.js"; // Weather 컴포넌트 추가
-import useMain from "./main.js";
 import "./assets/weather.css";
 import Calendar from "./api/Calendar.js";
 import "./assets/calendar.css";
-import calendarsmall from "./api/Calendarsmall.js";
 
 const App = () => {
   const [isMemoOpen, setMemoOpen] = useState(false);
   const [isMachineOpen, setMachineOpen] = useState(false);
   const [isWeatherOpen, setWeatherOpen] = useState(false);
   const [isCalendarOpen, setCalendarOpen] = useState(false);
-  const [openModals, setOpenModals] = useState([]); // 열려있는 모달 상태
-  const [memoText, setMemoText] = useState(""); // 메모 텍스트 상태 추가
-
+  const [memoText, setMemoText] = useState(""); // 메모 텍스트 상태
+  const [activeModal, setActiveModal] = useState(null);
   const [dragging, setDragging] = useState(false);
-  const [currentModal, setCurrentModal] = useState(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const memoModalRef = useRef(null);
   const machineModalRef = useRef(null);
   const weatherModalRef = useRef(null);
   const calendarModalRef = useRef(null);
-  //const { startResize } = useMain(memoModalRef);
 
   const toggleMemo = () => setMemoOpen((prev) => !prev);
   const toggleMachine = () => setMachineOpen((prev) => !prev);
   const toggleWeather = () => setWeatherOpen((prev) => !prev);
   const toggleCalendar = () => setCalendarOpen((prev) => !prev);
-
-  // 로컬 스토리지에서 메모장 텍스트 불러오기
-  useEffect(() => {
-    const savedMemo = localStorage.getItem("memoText");
-
-    if (savedMemo) {
-      setMemoText(savedMemo);
-    }
-  }, []);
 
   // 텍스트가 변경될 때마다 로컬 스토리지에 저장
   useEffect(() => {
@@ -57,26 +43,32 @@ const App = () => {
 
   // 드래그 시작
   const handleMouseDown = (e, ref) => {
+    setActiveModal(ref); // 활성 모달 설정
+    ref.current.style.zIndex = 1000; // 현재 z-index 설정
+
+    // 현재 모달의 위치를 가져옵니다.
+    const rect = ref.current.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left; // 클릭한 x 좌표와 모달의 왼쪽 위치 차이
+    const offsetY = e.clientY - rect.top; // 클릭한 y 좌표와 모달의 위쪽 위치 차이
+
+    // 드래그 상태와 오프셋을 설정합니다.
     setDragging(true);
-    setCurrentModal(ref);
-    setPosition({
-      x: e.clientX - ref.current.getBoundingClientRect().left,
-      y: e.clientY - ref.current.getBoundingClientRect().top,
-    });
+    setPosition({ x: offsetX, y: offsetY });
   };
 
   // 드래그 중
   const handleMouseMove = (e) => {
-    if (dragging && currentModal) {
-      currentModal.current.style.left = `${e.clientX - position.x}px`;
-      currentModal.current.style.top = `${e.clientY - position.y}px`;
+    if (dragging && activeModal) {
+      const modal = activeModal.current;
+      modal.style.left = `${e.clientX - position.x}px`;
+      modal.style.top = `${e.clientY - position.y}px`;
     }
   };
 
   // 드래그 종료
   const handleMouseUp = () => {
     setDragging(false);
-    setCurrentModal(null);
+    setActiveModal(null);
   };
 
   // ESC 키를 눌렀을 때 모달을 닫는 기능
@@ -112,12 +104,11 @@ const App = () => {
                 position: "absolute",
                 left: "100px",
                 top: "100px",
+                zIndex: activeModal === memoModalRef ? 1000 : 999,
               }}
+              onMouseDown={(e) => handleMouseDown(e, memoModalRef)}
             >
-              <div
-                className="window-header"
-                onMouseDown={(e) => handleMouseDown(e, memoModalRef)}
-              >
+              <div className="window-header">
                 <div className="window-title">메모장</div>
                 <div className="window-controls">
                   <button
@@ -152,13 +143,12 @@ const App = () => {
                 position: "absolute",
                 left: "150px",
                 top: "150px",
+                zIndex: activeModal === machineModalRef ? 1000 : 999,
               }}
+              onMouseDown={(e) => handleMouseDown(e, machineModalRef)}
             >
               <div className="modal_body2">
-                <div
-                  className="mheader"
-                  onMouseDown={(e) => handleMouseDown(e, machineModalRef)}
-                >
+                <div className="mheader">
                   <button
                     className="window-close2"
                     onClick={toggleMachine}
@@ -179,11 +169,14 @@ const App = () => {
                 height: "400px",
                 left: "200px",
                 top: "200px",
+                zIndex: activeModal === weatherModalRef ? 1000 : 999,
               }}
+              onMouseDown={(e) => handleMouseDown(e, weatherModalRef)}
             >
               <Weather
                 modalVisible={isWeatherOpen}
                 handleCloseModal={toggleWeather}
+                setActiveModal={setActiveModal} // 추가된 부분
               />
             </div>
           )}
@@ -194,6 +187,9 @@ const App = () => {
               handleCloseModal={toggleCalendar}
               ref={calendarModalRef}
               onMouseDown={(e) => handleMouseDown(e, calendarModalRef)}
+              style={{
+                zIndex: activeModal === calendarModalRef ? 1000 : 999,
+              }}
             />
           )}
         </div>

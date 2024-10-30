@@ -763,3 +763,11 @@ const App = () => {
 
 export default App;
   -->
+
+<!-- // 로컬 스토리지에서 메모장 텍스트 불러오기
+// useEffect(() => {
+// const savedMemo = localStorage.getItem("memoText");
+// if (savedMemo) {
+// setMemoText(savedMemo);
+// }
+// }, []); -->

@@ -96,6 +96,7 @@ img {
   min-height: 30%;
   max-width: 70%;
   max-height: 70%;
+  z-index: 1000;
 }
 
 .window-header {
@@ -159,19 +160,9 @@ img {
   height: 500px;
 }
 
-/* .modal2 {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 20%;
-  height: 100%;
-  min-width: 30%;
-  min-height: 30%;
-  max-width: 100%;
-  max-height: 100%;
-} */
+.modal2 {
+  z-index: 1000;
+}
 /* .modal_body {
   position: absolute;
   top: 50%;
