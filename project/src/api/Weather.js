@@ -5,6 +5,7 @@ import { FaCircle } from "react-icons/fa";
 import "../assets/weather.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
+
 const Weather = ({ modalVisible, handleCloseModal }) => {
   const API_KEY = "464ce89f05d310c3ebcdad8c20e4af4d"; // API 키
   const [weatherData, setWeatherData] = useState({
@@ -32,13 +33,14 @@ const Weather = ({ modalVisible, handleCloseModal }) => {
     ];
     return rainyConditions.some((condition) => description.includes(condition));
   };
-  const geoFindMe = () => {
+  const geoFindMe = useCallback(() => {
     if (!navigator.geolocation) {
       alert("브라우저가 위치 정보를 지원하지 않습니다.");
       return;
     }
     navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
-  };
+  }, []);
+
   const getWeatherIcon = (description) => {
     if (description.includes("clear")) return require("../img/맑음아이콘.png");
     if (isRainyWeather(description)) return require("../img/비아이콘.png");

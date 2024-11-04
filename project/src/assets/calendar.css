@@ -118,16 +118,17 @@
   background-color: #f5f5f5;
 }
 .fc .fc-day-sun a {
-  color: red;
+  color: rgb(230, 80, 80);
 }
 /* 토요일 날짜: 파란색 */
 .fc .fc-day-sat a {
-  color: blue;
+  color: rgb(67, 67, 212);
 }
 .fc .fc-day-sat:nth-last-child(1) {
   border-bottom-right-radius: 15px;
 }
 .calendarmain {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -162,18 +163,31 @@
   color: gray;
 }
 .sidetext button {
-  width: 100px;
-  height: 30px;
-  margin-top: 10px;
-  border: none;
-  color: black;
+  font-size: 1rem;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+  border: 1px solid #cac6c6;
+  background-color: rgb(224, 221, 221);
+  border-radius: 5px;
 }
-.sidetext button:focus {
-  background-color: #ee5f5b;
+
+#wnwnsdud {
+  background-color: rgb(96, 96, 248);
   color: white;
 }
+#wnwnsdud:focus {
+  background-color: rgb(0, 0, 255);
+  color: white;
+}
+#whckdgus {
+  background-color: #29db47;
+  color: white;
+}
+
 #whckdgus:focus {
-  background-color: rgb(41, 219, 71);
+  background-color: #00ff2a;
   color: white;
 }
 .smallcalendar {
@@ -234,7 +248,7 @@
 .fc .fc-media-screen {
   border-bottom-right-radius: 15px;
 }
-.window-close3:hover {
+s .window-close3:hover {
   background-color: #f04e48;
   border: 1px solid #e6e6e6;
 }
@@ -247,9 +261,74 @@
   background-color: #ee5f5b;
   border: none;
 }
+.modal4 {
+  background-color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+}
+
+.modal-content4 {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 5px;
+  text-align: center;
+}
+.modal-content4 p {
+  font-size: 2rem;
+}
+.close4 {
+  color: #aaa;
+  float: right;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.close4:hover,
+.close4:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nameinput {
+  border: rgb(173, 167, 167) solid 1px;
+  text-align: center;
+  width: 200px;
+  height: 40px;
+}
+.colorinput {
+  border: rgb(173, 167, 167) solid 1px;
+  text-align: center;
+  height: 40px;
+}
+.plusinput {
+  display: flex;
+  margin-top: 20px;
+}
+.color-buttons button:focus {
+  outline: none; /* 기본 아웃라인 제거 */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* 블루 색상의 그림자 */
+  background-color: rgba(255, 255, 255, 0.2); /* 포커스 시 배경색 변경 */
+}
+
+.sidesideheader {
+  display: flex;
+  justify-content: space-between;
+}
 /* fc-daygrid-day-events 이벤트 색 */
+
 /* <div class="fc-scrollgrid-sync-inner"><a aria-label="일요일" class="fc-col-header-cell-cushion">일</a></div> */
 /* <button type="button" title="This month" disabled="" aria-pressed="false" class="fc-today-button fc-button fc-button-primary">today</button> */
 /* fc-prev-button fc-button fc-button-primary */
+
 /* <td aria-labelledby="fc-dom-60" role="gridcell" data-date="2024-10-28" class="fc-day fc-day-mon fc-day-today fc-daygrid-day"><div class="fc-daygrid-day-frame fc-scrollgrid-sync-inner"><div class="fc-daygrid-day-top"><a aria-label="2024년 10월 28일" id="fc-dom-60" class="fc-daygrid-day-number">28</a></div><div class="fc-daygrid-day-events"><div class="fc-daygrid-day-bottom" style="margin-top: 0px;"></div></div><div class="fc-daygrid-day-bg"></div></div></td> */
+
 /* <button type="button" title="This month" aria-pressed="false" class="fc-today-button fc-button fc-button-primary" disabled="">today</button> */

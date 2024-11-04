@@ -83,6 +83,7 @@ img {
 }
 
 .floating-window {
+  z-index: 1000;
   position: absolute;
   top: 45%;
   left: 50%;
@@ -96,7 +97,6 @@ img {
   min-height: 30%;
   max-width: 70%;
   max-height: 70%;
-  z-index: 1000;
 }
 
 .window-header {

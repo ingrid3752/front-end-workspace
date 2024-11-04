@@ -4,12 +4,23 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
+import { IoIosCheckboxOutline } from "react-icons/io";
+import CalendarSmall from "./Calendarsmall";
 import "../assets/calendar.css";
 
-const Calendar = () => {
+const MyCalendar = ({ handleCloseModal }) => {
+  // 이름 변경
   const [events, setEvents] = useState([]); // 이벤트 목록 관리
-  const [selectedColor, setSelectedColor] = useState("#3788D8"); // 기본 이벤트 색상
+  const [selectedColor, setSelectedColor] = useState("#6074f8"); // 기본 이벤트 색상
+  const [selectedColors, setSelectedColors] = useState([
+    { label: "주준영", color: "#6074f8" },
+    { label: "조창현", color: "#29DB47" },
+  ]); // 색상 버튼 목록
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 열기 상태
+  const [newColor, setNewColor] = useState("#000000"); // 새 색상
+  const [newLabel, setNewLabel] = useState(""); // 새 레이블
   const calendarRef = useRef(null); // FullCalendar 인스턴스 접근
+
   // 로컬 스토리지에서 이벤트 불러오기
   useEffect(() => {
     const storedEvents = localStorage.getItem("events");
@@ -17,19 +28,9 @@ const Calendar = () => {
       setEvents(JSON.parse(storedEvents));
     }
   }, []);
-  // CSS 변수 변경 함수
-  const handleChangeEventColor = (color) => {
-    setSelectedColor(color); // 선택된 색상 저장
-  };
+
   // 날짜 클릭 시 이벤트 추가
   const handleDateClick = (arg) => {
-    const eventsOnDate = events.filter((event) => event.start === arg.dateStr);
-
-    if (eventsOnDate.length >= 3) {
-      alert("추가할 수 있는 일정은 최대 3개입니다.");
-      return;
-    }
-
     const title = prompt("일정 제목을 입력하세요:");
     if (title) {
       const newEvent = {
@@ -55,6 +56,7 @@ const Calendar = () => {
       localStorage.setItem("events", JSON.stringify(updatedEvents));
     }
   };
+
   // 일정 드래그 후 업데이트
   const handleEventDrop = (info) => {
     const updatedEvents = events.map((event) => {
@@ -65,44 +67,120 @@ const Calendar = () => {
     });
     setEvents(updatedEvents);
   };
+
   // 날짜 일(badge) 제거
   const handleDayCellContent = (arg) => {
     const dayNumber = arg.dayNumberText.replace("일", "");
     return dayNumber;
   };
+
   // 뷰 전환 핸들러
   const handleViewChange = (view) => {
     const calendarApi = calendarRef.current.getApi();
     calendarApi.changeView(view);
   };
+
+  // 새로운 색상 버튼 추가
+  const addColorButton = () => {
+    setIsModalOpen(true); // 모달 열기
+  };
+
+  // 모달에서 색상과 레이블 추가
+  const handleAddColor = () => {
+    if (newLabel && newColor) {
+      setSelectedColors([
+        ...selectedColors,
+        { label: newLabel, color: newColor },
+      ]);
+      setNewColor("#000000"); // 색상 초기화
+      setNewLabel(""); // 레이블 초기화
+      setIsModalOpen(false); // 모달 닫기
+    } else {
+      alert("이름과 색상을 모두 입력하세요.");
+    }
+  };
+
+  // 색상 버튼 삭제
+  const handleDeleteColor = (index) => {
+    const updatedColors = selectedColors.filter((_, i) => i !== index);
+    setSelectedColors(updatedColors);
+  };
+
+  // 모달 닫기
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="calendarmain">
       {/* 사이드 메뉴 */}
       <div className="calendarside">
         <div className="sideheader">
-          <button className="window-close3"></button>
+          <button className="window-close3" onClick={handleCloseModal}></button>
         </div>
         <div className="sidetext">
-          <p>iCoulds</p>
-          <button onClick={() => handleChangeEventColor("#EE5F5B")}>
-            주준영
-          </button>
+          <div className="sidesideheader">
+            <p>User</p>{" "}
+            <button onClick={addColorButton} className="plusbutton">
+              +
+            </button>
+          </div>
+          <div className="color-buttons">
+            {selectedColors.map((colorObj, index) => (
+              <div
+                key={index}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <button
+                  onClick={() => setSelectedColor(colorObj.color)}
+                  style={{
+                    backgroundColor: colorObj.color,
+                    margin: "5px",
+                    border: "none",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    color: "#fff",
+                    minWidth: "150px",
+                    textAlign: "left",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <IoIosCheckboxOutline
+                    style={{ marginRight: "15px", marginLeft: "3px" }}
+                  />
+                  {colorObj.label}
+                </button>
+                <button
+                  onClick={() => handleDeleteColor(index)}
+                  style={{
+                    marginLeft: "3px",
+                    border: "none",
+                    backgroundColor: "gray",
+                    color: "white",
+                    cursor: "pointer",
+                    borderRadius: "5px",
+                    width: "15px",
+                    height: "15px",
+                    textAlign: "center",
+                    marginTop: "3px",
+                    paddingBottom: "1px",
+                  }}
+                >
+                  x
+                </button>
+              </div>
+            ))}
+          </div>
           <br />
-          <button
-            onClick={() => handleChangeEventColor("#29DB47")}
-            id="whckdgus"
-          >
-            조창현
-          </button>
         </div>
         <div className="smallcalendar"></div>
       </div>
+
       {/* FullCalendar 본체 */}
       <div className="calendar-div">
         <div className="calheader">
-          <div className="calheaderplus">
-            <button className="calendarplus">+</button>
-          </div>
+          <div className="calheaderplus"></div>
           <button
             onClick={() => handleViewChange("dayGridMonth")}
             className="headerbutton"
@@ -128,6 +206,7 @@ const Calendar = () => {
             월
           </button>
         </div>
+
         <div className="background">
           <FullCalendar
             ref={calendarRef}
@@ -159,7 +238,36 @@ const Calendar = () => {
           />
         </div>
       </div>
+
+      {/* 모달 */}
+      {isModalOpen && (
+        <div className="modal4">
+          <div className="modal-content4">
+            <span className="close4" onClick={closeModal}>
+              &times;
+            </span>
+            <p>추가</p>
+            <div className="plusinput">
+              <input
+                type="text"
+                placeholder="이름을 입력하세요"
+                value={newLabel}
+                onChange={(e) => setNewLabel(e.target.value)}
+                className="nameinput"
+              />
+              <input
+                type="color"
+                value={newColor}
+                onChange={(e) => setNewColor(e.target.value)}
+                className="colorinput"
+              />
+            </div>
+            <button onClick={handleAddColor}>추가</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-export default Calendar;
+
+export default MyCalendar;

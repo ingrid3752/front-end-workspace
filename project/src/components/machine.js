@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { evaluate } from "mathjs";
 import "../assets/reset.css";
 import "../assets/machine.css";
 
@@ -16,7 +17,6 @@ const Machine = () => {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 쉼표 추가
     return parts.join("");
   };
-
   const updateOutput = (value) => {
     if (Number(value.replace(/,/g, "")) > MAX_VALUE) {
       setOutput("에러");
@@ -24,7 +24,6 @@ const Machine = () => {
     }
     setOutput(formatNumber(value));
   };
-
   const appendValue = (val) => {
     if (output === "에러") return; // 에러 상태에서는 입력 불가
     if (isOperator(val) && (output === "" || isLastCharOperator(output))) {
@@ -32,26 +31,22 @@ const Machine = () => {
     }
     updateOutput(output + val);
   };
-
   const toggleSign = () => {
     let currentValue = output.replace(/,/g, "");
     if (!currentValue) return;
     currentValue = String(-Number(currentValue));
     updateOutput(currentValue);
   };
-
   const calculateResult = () => {
     try {
       let expression = output.replace(/,/g, "");
-
       // 퍼센트 계산 처리
       if (expression.includes("%")) {
         expression = expression.replace(/(\d+)%/g, (match, num) => {
           return String(Number(num) / 100);
         });
       }
-
-      const result = eval(expression); // eval 사용
+      const result = evaluate(expression); // eval 대신 math.evaluate 사용
       if (result > MAX_VALUE) {
         setOutput("999,999,999이하의 숫자 입력");
       } else {
@@ -61,16 +56,13 @@ const Machine = () => {
       setOutput("다시입력해주세요");
     }
   };
-
   const isOperator = (char) => {
     return ["%", "/", "*", "-", "+"].includes(char);
   };
-
   const isLastCharOperator = (value) => {
     const lastChar = value.slice(-1);
     return isOperator(lastChar);
   };
-
   const adjustFontSize = () => {
     let fontSize = 2.5;
     while (
@@ -81,7 +73,6 @@ const Machine = () => {
       screenRef.current.style.fontSize = fontSize + "rem";
     }
   };
-
   return (
     <div className="full">
       <input
@@ -91,7 +82,6 @@ const Machine = () => {
         readOnly
         ref={screenRef}
       />
-
       <div className="buttons">
         <input
           type="button"
@@ -117,7 +107,6 @@ const Machine = () => {
           value="/"
           onClick={() => appendValue("/")}
         />
-
         <input
           type="button"
           className="button"
@@ -142,7 +131,6 @@ const Machine = () => {
           value="x"
           onClick={() => appendValue("*")}
         />
-
         <input
           type="button"
           className="button"
@@ -167,7 +155,6 @@ const Machine = () => {
           value="-"
           onClick={() => appendValue("-")}
         />
-
         <input
           type="button"
           className="button"
@@ -193,7 +180,6 @@ const Machine = () => {
           onClick={() => appendValue("+")}
         />
       </div>
-
       <div className="buttons">
         <input
           type="button"
@@ -219,5 +205,4 @@ const Machine = () => {
     </div>
   );
 };
-
 export default Machine;

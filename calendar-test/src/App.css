@@ -1,0 +1,29 @@
+/* App.css */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.main-calendar {
+  display: flex;
+  position: relative; /* 절대 위치를 위한 기준 설정 */
+}
+
+.large-calendar {
+  margin-right: 20px; /* 메인 캘린더와 스몰 캘린더 사이의 간격 */
+}
+
+.small-calendar {
+  position: absolute; /* 절대 위치 */
+  top: 0; /* 메인 캘린더의 상단에 위치 */
+  left: -200px; /* 메인 캘린더의 좌측에 위치 (조정 가능) */
+  background-color: white; /* 배경색 */
+  border: 1px solid #ccc; /* 테두리 */
+  padding: 10px; /* 패딩 */
+}
+
+.small {
+  width: 150px; /* 스몰 캘린더의 너비 */
+}

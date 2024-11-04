@@ -1,5 +1,5 @@
 .modal3 {
-  z-index: 1000;
+  z-index: 999;
 }
 .modal-content {
   position: absolute;
@@ -167,4 +167,7 @@ hr {
   font-weight: lighter;
   margin-bottom: 10px;
   padding: 0px;
+}
+img {
+  z-index: 999;
 }
