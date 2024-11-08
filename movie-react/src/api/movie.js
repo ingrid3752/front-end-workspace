@@ -2,11 +2,10 @@ import axios from "axios";
 
 // 1번 문제 ------------------------------------------------------------------------------------------
 
-const key = "1ac5c3bc3e021420776e84bfd9c5de39";
-const targetDt = 20240101;
+const key = "7051f228650924504c4f9f387acf9812";
 export const getDaily = (date) => {
   return axios.get(
-    `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${key}&targetDt=${targetDt}`
+    `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${key}&targetDt=${date}`
   );
 };
 

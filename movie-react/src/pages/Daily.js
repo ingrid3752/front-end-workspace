@@ -13,22 +13,27 @@ const Daily = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const [data, setData] = useState({
-    rank: "",
-    movieNm: "",
-    openDt: "",
-  });
-
   const [date, setDate] = useState(yesterday(new Date()));
-
-  useEffect(() => {
-    dailyAPI();
-  }, []);
+  const [boxOfficeData, setBoxOfficeData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const dailyAPI = async (date) => {
-    const response = await getDaily(date.replace(/-/g, ""));
-    setDate(response.data);
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await getDaily(date.replace(/-/g, ""));
+      setBoxOfficeData(response.boxOfficeResult.dailyBoxOfficeList); // API 응답 구조에 맞게 수정
+    } catch (err) {
+      setError("데이터를 가져오는 데 실패했습니다.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  useEffect(() => {
+    dailyAPI(date);
+  }, [date]);
 
   return (
     <StyledDiv>
@@ -40,6 +45,10 @@ const Daily = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
+
+      {loading && <p>로딩 중...</p>}
+      {error && <p>{error}</p>}
+
       <table>
         <thead>
           <tr>
@@ -49,12 +58,17 @@ const Daily = () => {
           </tr>
         </thead>
         <tbody>
-          <td>{data.rank}</td>
-          <td>{data.movieNm}</td>
-          <td>{data.openDt}</td>
+          {boxOfficeData.map((movie) => (
+            <tr key={movie.rank}>
+              <td>{movie.rank}</td>
+              <td>{movie.movieNm}</td>
+              <td>{movie.openDt}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </StyledDiv>
   );
 };
+
 export default Daily;
