@@ -3,8 +3,6 @@ import { getDaily } from "../api/movie";
 import { StyledDiv } from "../components/StyledDiv";
 import Header from "../components/Header";
 
-// 2번 문제 -----------------------------------------------------------------------
-
 const Daily = () => {
   const yesterday = (date) => {
     const year = date.getFullYear();
@@ -12,29 +10,20 @@ const Daily = () => {
     const day = String(date.getDate() - 1).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
-
   const [date, setDate] = useState(yesterday(new Date()));
-  const [boxOfficeData, setBoxOfficeData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
+  const [moviebox, setMoviebox] = useState([]); // 배열로 초기화
   const dailyAPI = async (date) => {
-    setLoading(true);
-    setError(null);
     try {
       const response = await getDaily(date.replace(/-/g, ""));
-      setBoxOfficeData(response.boxOfficeResult.dailyBoxOfficeList); // API 응답 구조에 맞게 수정
-    } catch (err) {
-      setError("데이터를 가져오는 데 실패했습니다.");
-    } finally {
-      setLoading(false);
+      // 응답 데이터에서 영화 정보를 추출하여 상태에 저장
+      setMoviebox(response.data.boxOfficeResult.dailyBoxOfficeList);
+    } catch (error) {
+      console.error("Error fetching daily box office data:", error);
     }
   };
-
   useEffect(() => {
     dailyAPI(date);
   }, [date]);
-
   return (
     <StyledDiv>
       <Header />
@@ -45,24 +34,24 @@ const Daily = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-
-      {loading && <p>로딩 중...</p>}
-      {error && <p>{error}</p>}
-
       <table>
         <thead>
           <tr>
             <th>순위</th>
             <th>영화제목</th>
             <th>개봉날짜</th>
+            <th>누적관객수</th>
+            <th>매출</th>
           </tr>
         </thead>
         <tbody>
-          {boxOfficeData.map((movie) => (
+          {moviebox.map((movie) => (
             <tr key={movie.rank}>
               <td>{movie.rank}</td>
               <td>{movie.movieNm}</td>
               <td>{movie.openDt}</td>
+              <td>{movie.audiAcc}</td>
+              <td>{movie.salesAcc}</td>
             </tr>
           ))}
         </tbody>
@@ -70,5 +59,4 @@ const Daily = () => {
     </StyledDiv>
   );
 };
-
 export default Daily;

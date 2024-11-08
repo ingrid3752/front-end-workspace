@@ -12,7 +12,7 @@ export const getDaily = (date) => {
 // ---------------------------------------------------------------------------------------------------
 
 const instance = axios.create({
-  baseURL: "http://192.168.10.51:8080/api/",
+  baseURL: "http://localhost:8080/api/",
 });
 
 export const getMovies = async () => {
