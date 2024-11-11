@@ -16,7 +16,7 @@ export const StyledDiv = styled.div`
     width: 100%;
     margin-top: 30px;
     th {
-      width: 25%;
+      width: 10%;
       font-weight: bold;
     }
     td {

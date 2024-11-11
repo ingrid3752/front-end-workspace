@@ -41,7 +41,7 @@ const Daily = () => {
             <th>영화제목</th>
             <th>개봉날짜</th>
             <th>누적관객수</th>
-            <th>매출</th>
+            <th>누적매출</th>
           </tr>
         </thead>
         <tbody>
