@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캐릭터 정보</title>
+    <link rel="stylesheet" href="API.css" />
+  </head>
+  <body>
+    <div>
+      <label for="characterName">캐릭터 이름:</label>
+      <input
+        type="text"
+        id="characterName"
+        placeholder="캐릭터 이름을 입력하세요"
+      />
+      <button id="searchButton">검색</button>
+    </div>
+    <div id="output"></div>
+    <script>
+      function fetchCharacterInfo() {
+        var characterName = document.getElementById("characterName").value;
+        var xmlHttpRequest = new XMLHttpRequest();
+        xmlHttpRequest.open(
+          "GET",
+          `https://developer-lostark.game.onstove.com/armories/characters/${characterName}/profiles`,
+          true
+        );
+        xmlHttpRequest.setRequestHeader("accept", "application/json");
+        xmlHttpRequest.setRequestHeader(
+          "authorization",
+          "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAwMTU1OTgifQ.Ai7vAQlZV9zjcMrdgt80XrgrcHVf9PxSHZx3u7txMOlD06NeFo5MgnPCfEw_mfeUzyZB2Dv86Mo_5YKP_bgwD_By2Z7veJ2WgpPC8dKYjZ_YegeCdU1BM4mDDfp2OtuSsvgcshMz2wabsd7uDbW76O5TYY1U7JLNytTlMB7YgWW4TzeewFH0VlY-G-qVd6SodAAAdLU5U_jhnBWeiALronSA5g0HFdPP_iQ8DWs7LbuGHgibpWjzkioPCYOjazK9zWkvv2-qhHYuJKenTNC1r1Ahzy0Yi2CVpBEc_qJ1VNW-oYaV8V3NLeVr-adIUk4h_5f9eMQpoc3IEkUR0C8Zzw"
+        );
+        xmlHttpRequest.onreadystatechange = () => {
+          if (xmlHttpRequest.readyState === 4) {
+            if (xmlHttpRequest.status === 200) {
+              var response = JSON.parse(xmlHttpRequest.responseText);
+              var output = document.getElementById("output");
+              output.innerHTML = `<pre>${JSON.stringify(
+                response,
+                null,
+                2
+              )}</pre>`;
+            } else {
+              var output = document.getElementById("output");
+              output.innerHTML = "오류 발생: " + xmlHttpRequest.status;
+            }
+          }
+        };
+        xmlHttpRequest.send();
+      }
+
+      // 검색 버튼 클릭 시 검색
+      document.getElementById("searchButton").onclick = fetchCharacterInfo;
+
+      // 입력 필드에서 엔터 키 눌렀을 때 검색
+      document
+        .getElementById("characterName")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            fetchCharacterInfo();
+          }
+        });
+    </script>
+  </body>
+</html>
